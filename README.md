@@ -34,4 +34,9 @@ Usage:   dkill <pid_name_port>
     -h, --help     - Show this help.
     -V, --version  - Show the version number for this program.
 ```
-## Programpatic Usage
+## Programatic Usage
+
+mod.ts exports multiple functions
+- dkill
+- port2pid
+- killPids
