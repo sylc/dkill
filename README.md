@@ -7,7 +7,7 @@ Deno cli that kills a process or a port, inspired from fkill in node
 ### Run directly
 
 ```
-deno run --unstable ./cli.ts
+deno run --unstable --allow-run --allow-net ./cli.ts
 ```
 
 ### Install
