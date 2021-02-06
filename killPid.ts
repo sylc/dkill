@@ -24,22 +24,22 @@ async function linuxKill(pid: number) {
 
 export async function KillPids(pids: number[]) {
   const os = Deno.build.os;
-  let count = 0;
+  const pidKilled: number[] = [];
   for (const pid of pids) {
     try {
       if (os === "windows") {
         await winKill(pid);
+        pidKilled.push(pid)
       } else if (os === "linux") {
         await linuxKill(pid);
       } else {
         console.log("Unsupported platform");
         throw Error("Unsupported platform");
       }
-      count += 1;
     } catch (err) {
       console.log(`Failed to kill pid ${pid}`);
       console.log(err);
     }
   }
-  return count;
+  return pidKilled;
 }

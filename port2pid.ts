@@ -22,12 +22,11 @@ export async function port2pid(port: number): Promise<number[]> {
 
     cmd.close();
     const pids = parsedLines
-      .filter((arr) => arr.length !== 0)
-      .map((arr) => +arr[pidColumnsIndex])
-      .filter((pid) => Number.isInteger(pid));
+      .filter((arr) => arr.length !== 0) // filter last line
+      .map((arr) => +arr[pidColumnsIndex]) // extract pids based on columns
+      .filter((pid) => Number.isInteger(pid) && pid !== 0); // ensure they are numbers. port 0 can be ignored
 
-      console.log(pids)
-    return pids;
+    return [ ...new Set(pids)] // remove duplicates;
   } else if (os === "linux") {
     console.log("Unsupported platform");
     throw Error("Unsupported platform");
