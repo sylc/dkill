@@ -1,4 +1,4 @@
-import { KillPids, port2pid } from "./mod.ts";
+import { KillPids, port2pid } from "../mod.ts";
 
 export async function dkill(
   targets: {

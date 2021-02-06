@@ -1,3 +1,3 @@
-export * from "./dkill.ts";
-export * from "./port2pid.ts";
-export * from "./killPid.ts";
+export * from "./src/dkill.ts";
+export * from "./src/port2pid.ts";
+export * from "./src/killPid.ts";

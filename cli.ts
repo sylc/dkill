@@ -1,9 +1,10 @@
-import { Command } from "./dep.ts";
+import { Command } from "./deps.ts";
 import { dkill } from "./mod.ts";
+import { version } from "./version.ts";
 
 await new Command()
   .name("dkill")
-  .version("0.1.0")
+  .version(version)
   .description(
     `Kill any process by 
      - ports: add a semicolon in front to define it as a port. ex: 'dkill :3000'
