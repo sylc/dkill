@@ -22,6 +22,8 @@ deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@0.2.2/cli.
 deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@0.2.2/cli.ts
 ```
 
+You can then access use it using command `dkill`
+
 ```
 $ dkill --help
 
@@ -48,6 +50,20 @@ mod.ts exports multiple functions
 - dkill
 - port2pid
 - killPids
+
+## Support
+- Windows
+  - [x] port
+  - [x] pids
+  - [ ] process
+- Linux
+  - [ ] port
+  - [ ] pids
+  - [ ] process
+- Mac
+  - [ ] port
+  - [ ] pids
+  - [ ] process
 
 ## Inspiration
 
