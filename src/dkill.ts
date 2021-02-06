@@ -36,7 +36,7 @@ export async function dkill(
 
   // processes
   if (procs && procs.length) {
-    console.log("Not Implemented");
+    console.log("Process name input not implemented yet");
     return;
   }
 
