@@ -6,7 +6,7 @@ export async function dkill(
     ports?: number[];
     procs?: string[];
   },
-  opts?: { verbose?: boolean }
+  opts?: { verbose?: boolean },
 ) {
   let pidsKilled: number[] = [];
 
@@ -14,7 +14,7 @@ export async function dkill(
     opts?.verbose ? console.log(text) : null;
   }
 
-  const { pids, ports, procs } = targets
+  const { pids, ports, procs } = targets;
 
   // pids
   if (pids && pids.length) {
@@ -27,7 +27,7 @@ export async function dkill(
     let pidsOfAllPorts: number[] = [];
     for (const port of ports) {
       const pidsOfPort = await port2pid(port);
-      verbose(`pids for port ${port}: ${pidsOfPort}`)
+      verbose(`pids for port ${port}: ${pidsOfPort}`);
       pidsOfAllPorts = pidsOfAllPorts.concat(pidsOfPort);
     }
     const killed = await KillPids(pidsOfAllPorts);

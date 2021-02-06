@@ -9,7 +9,7 @@ await new Command()
     `Kill any process by 
      - ports: add a semicolon in front to define it as a port. ex: 'dkill :3000'
      - pids: not implemented yet
-     - process names: not implemented yet`
+     - process names: not implemented yet`,
   )
   .arguments("<port_proc_pid>")
   .option("-v, --verbose", "increase verbosity")
@@ -31,7 +31,7 @@ await new Command()
       pids.push(+port_proc_pid);
     } else {
       // must be a string
-      procs.push(port_proc_pid)
+      procs.push(port_proc_pid);
     }
 
     await dkill({ ports, pids, procs }, { verbose: opts.verbose });

@@ -1,6 +1,6 @@
 # dkill
 
-Deno cli that kills a process or a port, inspired from fkill in node
+Deno cli to kill processes and ports
 
 ## CLI Usage
 
@@ -34,9 +34,15 @@ Usage:   dkill <pid_name_port>
     -h, --help     - Show this help.
     -V, --version  - Show the version number for this program.
 ```
+
 ## Programatic Usage
 
 mod.ts exports multiple functions
+
 - dkill
 - port2pid
 - killPids
+
+## Inspiration
+
+- nodejs [fkill-cli](https://www.npmjs.com/package/fkill-cli)

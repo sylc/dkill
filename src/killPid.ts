@@ -29,7 +29,7 @@ export async function KillPids(pids: number[]) {
     try {
       if (os === "windows") {
         await winKill(pid);
-        pidKilled.push(pid)
+        pidKilled.push(pid);
       } else if (os === "linux") {
         await linuxKill(pid);
       } else {
