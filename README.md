@@ -7,13 +7,13 @@ Deno cli to kill processes and ports
 ### Run directly
 
 ```
-deno run --unstable --allow-run --allow-net ./cli.ts
+deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@latest/cli.ts
 ```
 
 ### Install
 
 ```
-deno install --unstable --allow-run --allow-net ./cli.ts
+deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@latest/cli.ts
 ```
 
 ```
@@ -25,8 +25,8 @@ Usage:   dkill <pid_name_port>
   Description:
 
     Kill any process by
-         - port: add a semicolon in front to define it as a port. ex: dkill :3000
-         - pid: not implemented yet
+         - port: add a semicolon in front to define it as a port. ex: 'dkill :3000'
+         - pid: a valid integer. ex: 'dkill 12654' 
          - process name: not implemented yet
 
   Options:

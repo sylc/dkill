@@ -7,9 +7,9 @@ await new Command()
   .version(version)
   .description(
     `Kill any process by 
-     - ports: add a semicolon in front to define it as a port. ex: 'dkill :3000'
-     - pids: not implemented yet
-     - process names: not implemented yet`,
+     - port: add a semicolon in front to define it as a port. ex: 'dkill :3000'
+     - pid: a valid integer. ex: 'dkill 12654'
+     - process name: not implemented yet`,
   )
   .arguments("<port_proc_pid>")
   .option("-v, --verbose", "increase verbosity")
