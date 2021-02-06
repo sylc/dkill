@@ -1,19 +1,25 @@
-# dkill
+[![nest badge](https://nest.land/badge.svg)](https://nest.land/package/your-module)
 
-Deno cli to kill processes and ports
+<h1 align="center">
+  🎯 dkill
+</h1>
+
+<p align="center">
+  <b>kill processes and ports for Deno 🦕</b>
+</p>
 
 ## CLI Usage
 
 ### Run directly
 
 ```
-deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@latest/cli.ts
+deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@0.2.2/cli.ts
 ```
 
 ### Install
 
 ```
-deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@latest/cli.ts
+deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@0.2.2/cli.ts
 ```
 
 ```
