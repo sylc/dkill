@@ -13,13 +13,13 @@
 ### Run directly
 
 ```
-deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@0.2.2/cli.ts
+deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@0.2.3/cli.ts
 ```
 
 ### Install
 
 ```
-deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@0.2.2/cli.ts
+deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@0.2.3/cli.ts
 ```
 
 You can then access use it using command `dkill`
@@ -58,7 +58,7 @@ mod.ts exports multiple functions
   - [ ] process
 - Linux
   - [ ] port
-  - [ ] pids
+  - [x] pids
   - [ ] process
 - Mac
   - [ ] port

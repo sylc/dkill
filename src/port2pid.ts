@@ -28,10 +28,10 @@ export async function port2pid(port: number): Promise<number[]> {
 
     return [...new Set(pids)]; // remove duplicates;
   } else if (os === "linux") {
-    console.log("Unsupported platform");
-    throw Error("Unsupported platform");
+    console.log("Platform not supported yet");
+    throw Error("Platform not supported yet");
   } else {
-    console.log("Unsupported platform");
-    throw Error("Unsupported platform");
+    console.log("Platform not supported yet");
+    throw Error("Platform not supported yet");
   }
 }

@@ -32,9 +32,10 @@ export async function KillPids(pids: number[]) {
         pidKilled.push(pid);
       } else if (os === "linux") {
         await linuxKill(pid);
+        pidKilled.push(pid);
       } else {
-        console.log("Unsupported platform");
-        throw Error("Unsupported platform");
+        console.log("Platform not supported yet");
+        throw Error("Platform not supported yet");
       }
     } catch (err) {
       console.log(`Failed to kill pid ${pid}`);
