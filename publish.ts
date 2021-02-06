@@ -16,6 +16,7 @@ const config = {
     "./deps.ts",
     "./cli.ts",
     "./version.ts",
+    "LICENSE"
   ],
   ignore: [".git", ".vscode"],
   checkFormat: "deno fmt",
