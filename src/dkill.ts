@@ -6,7 +6,7 @@ export async function dkill(
     ports?: number[];
     procs?: string[];
   },
-  opts?: { verbose?: boolean },
+  opts?: { verbose?: boolean; dryrun?: boolean },
 ) {
   let pidsKilled: number[] = [];
 
@@ -18,7 +18,10 @@ export async function dkill(
 
   // pids
   if (pids && pids.length) {
-    const killed = await KillPids(pids);
+    let killed = pids;
+    if (!opts?.dryrun) {
+      killed = await KillPids(pids);
+    }
     pidsKilled = pidsKilled.concat(killed);
   }
 
@@ -30,7 +33,10 @@ export async function dkill(
       verbose(`pids for port ${port}: ${pidsOfPort}`);
       pidsOfAllPorts = pidsOfAllPorts.concat(pidsOfPort);
     }
-    const killed = await KillPids(pidsOfAllPorts);
+    let killed = pidsOfAllPorts;
+    if (!opts?.dryrun) {
+      killed = await KillPids(pidsOfAllPorts);
+    }
     pidsKilled = pidsKilled.concat(killed);
   }
 
@@ -41,7 +47,10 @@ export async function dkill(
   }
 
   if (pidsKilled.length) {
-    console.log("pids Killed", pidsKilled);
+    console.log(
+      `${opts?.dryrun ? "list of pids target (not killed):" : "pids killed:"}`,
+      pidsKilled.join(" "),
+    );
   } else {
     console.log("No process found");
   }

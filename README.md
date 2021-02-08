@@ -13,13 +13,13 @@
 ### Run directly
 
 ```
-deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@0.2.3/cli.ts
+deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@0.3.0/cli.ts
 ```
 
 ### Install
 
 ```
-deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@0.2.3/cli.ts
+deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@0.3.0/cli.ts
 ```
 
 You can then access use it using command `dkill`
@@ -34,37 +34,49 @@ Usage:   dkill <pid_name_port>
 
     Kill any process by
          - port: add a semicolon in front to define it as a port. ex: 'dkill :3000'
-         - pid: a valid integer. ex: 'dkill 12654' 
+         - pid: a valid integer. ex: 'dkill 12654'
          - process name: not implemented yet
 
   Options:
 
     -h, --help     - Show this help.
     -V, --version  - Show the version number for this program.
+    -v, --verbose  - Increase verbosity
+    -d, --dryrun   - Dry run, List the pids that would have been killed. Does not kill anything
+    
 ```
 
 ## Programatic Usage
 
-mod.ts exports multiple functions
+mod.ts exports multiple functions that can be used programmatically. Check
+source code for info
 
-- dkill
-- port2pid
-- killPids
+- dkill(targets: { pids?: number[]; ports?: number[]; procs?: string[]; },
+  opts?: { verbose?: boolean, dryrun?: boolean })
+- port2pid()
+- killPids()
 
 ## Support
 
 - Windows
   - [x] port
-  - [x] pids
+  - [x] pid
   - [ ] process
 - Linux
-  - [ ] port
-  - [x] pids
+  - [x] port
+  - [x] pid
   - [ ] process
 - Mac
   - [ ] port
-  - [ ] pids
+  - [ ] pid
   - [ ] process
+
+## TODOs
+
+- [ ] provide process names killed
+- [ ] kill by process name
+- [ ] supply multiple values to cli in on go
+- [ ] on linux check if `ss` is present.
 
 ## Inspiration
 
