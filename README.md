@@ -43,7 +43,6 @@ Usage:   dkill <pid_name_port>
     -V, --version  - Show the version number for this program.
     -v, --verbose  - Increase verbosity
     -d, --dryrun   - Dry run, List the pids that would have been killed. Does not kill anything
-    
 ```
 
 ## Programatic Usage
