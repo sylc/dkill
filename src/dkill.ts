@@ -1,4 +1,5 @@
 import { KillPids, port2pid } from "../mod.ts";
+import { setVerbose, verbose } from "./utils/verbose.ts";
 
 export async function dkill(
   targets: {
@@ -8,36 +9,19 @@ export async function dkill(
   },
   opts?: { verbose?: boolean; dryrun?: boolean },
 ) {
-  let pidsKilled: number[] = [];
-
-  function verbose(text: string) {
-    opts?.verbose ? console.log(text) : null;
-  }
+  setVerbose(opts?.verbose);
 
   const { pids, ports, procs } = targets;
 
-  // pids
-  if (pids && pids.length) {
-    let killed = pids;
-    if (!opts?.dryrun) {
-      killed = await KillPids(pids);
-    }
-    pidsKilled = pidsKilled.concat(killed);
-  }
+  let allPidsToKill = pids || [];
 
-  // ports
+  // Find Pids for ports
   if (ports && ports.length) {
-    let pidsOfAllPorts: number[] = [];
     for (const port of ports) {
       const pidsOfPort = await port2pid(port);
       verbose(`pids for port ${port}: ${pidsOfPort}`);
-      pidsOfAllPorts = pidsOfAllPorts.concat(pidsOfPort);
+      allPidsToKill = allPidsToKill.concat(pidsOfPort);
     }
-    let killed = pidsOfAllPorts;
-    if (!opts?.dryrun) {
-      killed = await KillPids(pidsOfAllPorts);
-    }
-    pidsKilled = pidsKilled.concat(killed);
   }
 
   // processes
@@ -46,10 +30,23 @@ export async function dkill(
     return;
   }
 
-  if (pidsKilled.length) {
+  // remove duplicates
+  allPidsToKill = [...new Set(allPidsToKill)];
+
+  // find names
+
+  // Kill them all, or just pretend
+  let killed = [];
+  if (!opts?.dryrun) {
+    killed = await KillPids(allPidsToKill);
+  } else {
+    killed = allPidsToKill;
+  }
+
+  if (killed.length) {
     console.log(
       `${opts?.dryrun ? "list of pids target (not killed):" : "pids killed:"}`,
-      pidsKilled.join(" "),
+      killed.join(" "),
     );
   } else {
     console.log("No process found");

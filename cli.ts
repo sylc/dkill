@@ -6,12 +6,14 @@ await new Command()
   .name("dkill")
   .version(version)
   .description(
-    `Kill any process by 
+    `Kill any processes by 
      - port: add a semicolon in front to define it as a port. ex: 'dkill :3000'
      - pid: a valid integer. ex: 'dkill 12654'
-     - process name: not implemented yet`,
+     - process name: not implemented yet
+     
+    You can specify multiple targets at once: 'dkill :5000 :3000 164'`,
   )
-  .arguments("<port_proc_pid>")
+  .arguments("<targets...:string>")
   .option("-v, --verbose", "Increase verbosity")
   .option(
     "-d, --dryrun",
@@ -20,27 +22,29 @@ await new Command()
   .action(
     async (
       opts: { verbose: boolean; dryrun: boolean },
-      port_proc_pid: string,
+      targets: string[],
     ) => {
       const ports: number[] = [];
       const pids: number[] = [];
       const procs: string[] = [];
 
-      // Check if port
-      if (port_proc_pid.startsWith(":")) {
-        const port = +port_proc_pid.slice(1);
-        if (!Number.isInteger(port)) {
-          console.log(`Invalid port number "port"`);
-          return;
+      targets.forEach((target) => {
+        // Check if port
+        if (target.startsWith(":")) {
+          const port = +target.slice(1);
+          if (!Number.isInteger(port)) {
+            console.log(`Invalid port number "port"`);
+            return;
+          }
+          ports.push(port);
+        } else if (Number.isInteger(+target)) {
+          // check if pid
+          pids.push(+target);
+        } else {
+          // must be a string
+          procs.push(target);
         }
-        ports.push(port);
-      } else if (Number.isInteger(+port_proc_pid)) {
-        // check if pid
-        pids.push(+port_proc_pid);
-      } else {
-        // must be a string
-        procs.push(port_proc_pid);
-      }
+      });
 
       await dkill({ ports, pids, procs }, {
         verbose: opts.verbose,

@@ -13,13 +13,13 @@
 ### Run directly
 
 ```
-deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@0.3.0/cli.ts
+deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@0.4.0/cli.ts
 ```
 
 ### Install
 
 ```
-deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@0.3.0/cli.ts
+deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@0.4.0/cli.ts
 ```
 
 You can then access use it using command `dkill`
@@ -27,15 +27,17 @@ You can then access use it using command `dkill`
 ```
 $ dkill --help
 
-Usage:   dkill <pid_name_port>
+Usage:   dkill <targets...>
   Version: v0.0.1
 
   Description:
 
-    Kill any process by
+    Kill any processes by
          - port: add a semicolon in front to define it as a port. ex: 'dkill :3000'
          - pid: a valid integer. ex: 'dkill 12654'
          - process name: not implemented yet
+
+        You can specify multiple targets at once. ex: 'dkill :5000 :3000 164'
 
   Options:
 
@@ -43,7 +45,6 @@ Usage:   dkill <pid_name_port>
     -V, --version  - Show the version number for this program.
     -v, --verbose  - Increase verbosity
     -d, --dryrun   - Dry run, List the pids that would have been killed. Does not kill anything
-    
 ```
 
 ## Programatic Usage
