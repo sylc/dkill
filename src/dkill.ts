@@ -7,7 +7,7 @@ export async function dkill(
     ports?: number[];
     procs?: string[];
   },
-  opts?: { verbose?: boolean; dryrun?: boolean }
+  opts?: { verbose?: boolean; dryrun?: boolean },
 ) {
   setVerbose(opts?.verbose);
 
@@ -31,23 +31,22 @@ export async function dkill(
   }
 
   // remove duplicates
-  allPidsToKill = [ ...new Set(allPidsToKill)]
-  
-  // find names
-  
+  allPidsToKill = [...new Set(allPidsToKill)];
 
-  // Kill them all, or just pretend 
+  // find names
+
+  // Kill them all, or just pretend
   let killed = [];
   if (!opts?.dryrun) {
     killed = await KillPids(allPidsToKill);
   } else {
-    killed = allPidsToKill
+    killed = allPidsToKill;
   }
 
   if (killed.length) {
     console.log(
       `${opts?.dryrun ? "list of pids target (not killed):" : "pids killed:"}`,
-      killed.join(" ")
+      killed.join(" "),
     );
   } else {
     console.log("No process found");

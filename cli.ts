@@ -28,23 +28,23 @@ await new Command()
       const pids: number[] = [];
       const procs: string[] = [];
 
-      targets.forEach(target => {
-      // Check if port
-      if (target.startsWith(":")) {
-        const port = +target.slice(1);
-        if (!Number.isInteger(port)) {
-          console.log(`Invalid port number "port"`);
-          return;
+      targets.forEach((target) => {
+        // Check if port
+        if (target.startsWith(":")) {
+          const port = +target.slice(1);
+          if (!Number.isInteger(port)) {
+            console.log(`Invalid port number "port"`);
+            return;
+          }
+          ports.push(port);
+        } else if (Number.isInteger(+target)) {
+          // check if pid
+          pids.push(+target);
+        } else {
+          // must be a string
+          procs.push(target);
         }
-        ports.push(port);
-      } else if (Number.isInteger(+target)) {
-        // check if pid
-        pids.push(+target);
-      } else {
-        // must be a string
-        procs.push(target);
-      }
-    })
+      });
 
       await dkill({ ports, pids, procs }, {
         verbose: opts.verbose,

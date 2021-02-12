@@ -1,7 +1,7 @@
-let isVerbose = false
+let isVerbose = false;
 
 export function setVerbose(value: boolean | undefined) {
-  isVerbose = !!value
+  isVerbose = !!value;
 }
 
 export function verbose(text: string) {
