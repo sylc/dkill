@@ -1,6 +1,10 @@
+import { setVerbose, verbose } from "./utils/verbose.ts";
+
 async function winKill(pid: number) {
+  const cmdArr = ["cmd", "/c", `taskkill /PID ${pid} /F`]
+  verbose(cmdArr.join(' '))
   const cmd = Deno.run({
-    cmd: ["cmd", "/c", `taskkill /PID ${pid} /F`],
+    cmd: cmdArr,
     stdout: "piped",
     stderr: "piped",
   });
@@ -11,8 +15,10 @@ async function winKill(pid: number) {
 }
 
 async function linuxKill(pid: number) {
+  const cmdArr = ["kill", "-9", `${pid}`]
+  verbose(cmdArr.join(' '))
   const cmd = Deno.run({
-    cmd: ["kill", "-9", `${pid}`],
+    cmd: cmdArr,
     stdout: "piped",
     stderr: "piped",
   });
@@ -22,9 +28,11 @@ async function linuxKill(pid: number) {
   cmd.close();
 }
 
-export async function KillPids(pids: number[]) {
+export async function KillPids(pids: number[], opts?: { verbose?: boolean }) {
+  setVerbose(opts?.verbose)
   const os = Deno.build.os;
   const pidKilled: number[] = [];
+  
   for (const pid of pids) {
     try {
       if (os === "windows") {

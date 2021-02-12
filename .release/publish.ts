@@ -1,5 +1,5 @@
 import { publish } from "https://x.nest.land/eggs@0.3.4/src/commands/publish.ts";
-import { version } from "./version.ts";
+import { version } from "../version.ts";
 
 const config = {
   name: "dkill",
@@ -10,13 +10,13 @@ const config = {
   unstable: true,
   unlisted: false,
   files: [
-    "./mod.ts",
-    "./src/**/*",
-    "./README.md",
-    "./deps.ts",
-    "./cli.ts",
-    "./version.ts",
-    "LICENSE",
+    "../mod.ts",
+    "../src/**/*",
+    "../README.md",
+    "../deps.ts",
+    "../cli.ts",
+    "../version.ts",
+    "../LICENSE",
   ],
   ignore: [".git", ".vscode"],
   checkFormat: "deno fmt",
