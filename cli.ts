@@ -20,10 +20,7 @@ await new Command()
     "Dry run, List the pids that would have been killed. Does not kill anything",
   )
   .action(
-    async (
-      opts: { verbose: boolean; dryrun: boolean },
-      targets: string[],
-    ) => {
+    async (opts: { verbose: boolean; dryrun: boolean }, targets: string[]) => {
       const ports: number[] = [];
       const pids: number[] = [];
       const procs: string[] = [];
@@ -46,10 +43,23 @@ await new Command()
         }
       });
 
-      await dkill({ ports, pids, procs }, {
-        verbose: opts.verbose,
-        dryrun: opts.dryrun,
-      });
+      const killed = await dkill(
+        { ports, pids, procs },
+        {
+          verbose: opts.verbose,
+          dryrun: opts.dryrun,
+          includeCmds: true,
+        },
+      );
+
+      if (killed && killed.length) {
+        // TODO improve table output
+        // console.table(killed.map(pidItem => ({ ...pidItem, port: `:${pidItem.port}`, killed: pidItem.killed ? 'yes' : 'x'})));
+        console.table(killed);
+        opts?.dryrun && console.log("Nothing has been killed");
+      } else {
+        console.log("No process found");
+      }
     },
   )
   .parse(Deno.args);

@@ -7,3 +7,7 @@ export function setVerbose(value: boolean | undefined) {
 export function verbose(text: string) {
   isVerbose ? console.log(text) : null;
 }
+
+export function getVerbose() {
+  return isVerbose;
+}

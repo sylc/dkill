@@ -1,15 +1,14 @@
-export async function port2pid(port: number): Promise<number[]> {
+import { runCmd } from "./utils/runCmd.ts";
+
+export async function portToPid(port: number): Promise<number[]> {
   const os = Deno.build.os;
   if (os === "windows") {
-    const cmd = Deno.run({
-      cmd: ["cmd", "/c", `netstat -nao | findstr :${port}`],
-      stdout: "piped",
-      stderr: "piped",
-    });
+    const outString = await runCmd([
+      "cmd",
+      "/c",
+      `netstat -nao | findstr :${port}`,
+    ]);
 
-    const out = await cmd.output();
-    cmd.close();
-    const outString = new TextDecoder().decode(out);
     // outstring example
     // TCP    0.0.0.0:3000           0.0.0.0:0              LISTENING       28392
     const parsedLines = outString
@@ -28,18 +27,10 @@ export async function port2pid(port: number): Promise<number[]> {
 
     return [...new Set(pids)]; // remove duplicates;
   } else if (os === "linux") {
-    const cmd = Deno.run({
-      // -l: listening
-      // -p: provide pid
-      // -n: provide local address
-      cmd: ["ss", "-lnp"],
-      stdout: "piped",
-      stderr: "piped",
-    });
-
-    const out = await cmd.output();
-    cmd.close();
-    const outString = new TextDecoder().decode(out);
+    // -l: listening
+    // -p: provide pid
+    // -n: provide local address
+    const outString = await runCmd(["ss", "-lnp"]);
 
     // outstring example
     // tcp LISTEN    0   128  0.0.0.0:8080   0.0.0.0:*   users:(("deno", pid=200, fd=12))

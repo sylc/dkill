@@ -1,45 +1,21 @@
-import { setVerbose, verbose } from "./utils/verbose.ts";
-
-async function winKill(pid: number) {
-  const cmdArr = ["cmd", "/c", `taskkill /PID ${pid} /F`];
-  verbose(cmdArr.join(" "));
-  const cmd = Deno.run({
-    cmd: cmdArr,
-    stdout: "piped",
-    stderr: "piped",
-  });
-
-  await cmd.output();
-
-  cmd.close();
-}
-
-async function linuxKill(pid: number) {
-  const cmdArr = ["kill", "-9", `${pid}`];
-  verbose(cmdArr.join(" "));
-  const cmd = Deno.run({
-    cmd: cmdArr,
-    stdout: "piped",
-    stderr: "piped",
-  });
-
-  await cmd.output();
-
-  cmd.close();
-}
+import { runCmd } from "./utils/runCmd.ts";
 
 export async function KillPids(pids: number[], opts?: { verbose?: boolean }) {
-  setVerbose(opts?.verbose);
   const os = Deno.build.os;
   const pidKilled: number[] = [];
+
+  // Ensure no duplicates.
+  const uniqPids = [...new Set(pids)];
 
   for (const pid of pids) {
     try {
       if (os === "windows") {
-        await winKill(pid);
+        const cmdArr = ["cmd", "/c", `taskkill /PID ${pid} /F`];
+        await runCmd(cmdArr, opts?.verbose);
         pidKilled.push(pid);
       } else if (os === "linux") {
-        await linuxKill(pid);
+        const cmdArr = ["kill", "-9", `${pid}`];
+        await runCmd(cmdArr, opts?.verbose);
         pidKilled.push(pid);
       } else {
         console.log("Platform not supported yet");
