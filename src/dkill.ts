@@ -1,5 +1,13 @@
-import { KillPids, port2pid } from "../mod.ts";
+import { KillPids, pidToCmd, portToPid } from "../mod.ts";
 import { setVerbose, verbose } from "./utils/verbose.ts";
+
+interface PidItem {
+  pid: number;
+  proc?: string;
+  cmd?: string;
+  port?: number;
+  killed?: boolean;
+}
 
 export async function dkill(
   targets: {
@@ -7,20 +15,25 @@ export async function dkill(
     ports?: number[];
     procs?: string[];
   },
-  opts?: { verbose?: boolean; dryrun?: boolean },
+  opts?: { verbose?: boolean; dryrun?: boolean; includeCmds: boolean },
 ) {
   setVerbose(opts?.verbose);
 
   const { pids, ports, procs } = targets;
 
-  let allPidsToKill = pids || [];
+  let allPidsToKill: PidItem[] = [];
+  pids?.forEach((pid) => {
+    allPidsToKill.push({ pid });
+  });
 
   // Find Pids for ports
   if (ports && ports.length) {
     for (const port of ports) {
-      const pidsOfPort = await port2pid(port);
+      const pidsOfPort = await portToPid(port);
       verbose(`pids for port ${port}: ${pidsOfPort}`);
-      allPidsToKill = allPidsToKill.concat(pidsOfPort);
+      allPidsToKill = allPidsToKill.concat(
+        pidsOfPort.map((pid) => ({ pid, port })),
+      );
     }
   }
 
@@ -30,25 +43,34 @@ export async function dkill(
     return;
   }
 
-  // remove duplicates
-  allPidsToKill = [...new Set(allPidsToKill)];
-
   // find names
+  if (opts?.includeCmds && Deno.build.os === 'linux') {
+    const cmds = await pidToCmd(
+      allPidsToKill.filter((pidItem) => (!pidItem.proc || !pidItem.cmd)).map(
+        (pidItem) => pidItem.pid
+      ),
+    );
+    // merge results
+    allPidsToKill = allPidsToKill.map((pidItem) => {
+      const item = cmds.find((cmdItem) => cmdItem.pid === pidItem.pid);
+      return { ...pidItem, ...item };
+    });
+  }
 
   // Kill them all, or just pretend
-  let killed = [];
+  allPidsToKill = allPidsToKill.map((pidItem) => ({
+    ...pidItem,
+    killed: false,
+  }));
   if (!opts?.dryrun) {
-    killed = await KillPids(allPidsToKill);
-  } else {
-    killed = allPidsToKill;
+    const killedPids = await KillPids(
+      allPidsToKill.map((pidItem) => pidItem.pid),
+    );
+    allPidsToKill = allPidsToKill.map((pidItem) => ({
+      ...pidItem,
+      killed: killedPids.includes(pidItem.pid),
+    }));
   }
 
-  if (killed.length) {
-    console.log(
-      `${opts?.dryrun ? "list of pids target (not killed):" : "pids killed:"}`,
-      killed.join(" "),
-    );
-  } else {
-    console.log("No process found");
-  }
+  return allPidsToKill;
 }
