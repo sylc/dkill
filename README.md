@@ -13,13 +13,13 @@
 ### Run directly
 
 ```
-deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@0.4.0/cli.ts
+deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@0.5.0/cli.ts
 ```
 
 ### Install
 
 ```
-deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@0.4.0/cli.ts
+deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@0.5.0/cli.ts
 ```
 
 You can then access use it using command `dkill`
@@ -74,9 +74,7 @@ source code for info
 
 ## TODOs
 
-- [ ] provide process names killed
 - [ ] kill by process name
-- [ ] supply multiple values to cli in on go
 - [ ] on linux check if `ss` is present.
 
 ## Inspiration
