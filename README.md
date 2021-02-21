@@ -60,22 +60,29 @@ source code for info
 ## Support
 
 ### Windows
-  - [x] port
-  - [x] pid
-  - [ ] process
-> On windows, to retrieve the command line, Powershell is used, which requires windows 8 or above.
+
+- [x] port
+- [x] pid
+- [ ] process
+
+> On windows, to retrieve the command line, Powershell is used, which requires
+> windows 8 or above.
 
 ### Linux
-  - [x] port
-  - [x] pid
-  - [ ] process
-> On linux the cmd `ss` is used, which works on ubuntu 16.04 and above. 
+
+- [x] port
+- [x] pid
+- [ ] process
+
+> On linux the cmd `ss` is used, which works on ubuntu 16.04 and above.
 
 ### Mac
+
 Not implemented. PR welcome.
-  - [ ] port
-  - [ ] pid
-  - [ ] process
+
+- [ ] port
+- [ ] pid
+- [ ] process
 
 ## TODOs
 

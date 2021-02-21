@@ -47,7 +47,7 @@ export async function dkill(
   if (opts?.includeCmds) {
     const cmds = await pidToCmd(
       allPidsToKill.filter((pidItem) => (!pidItem.proc || !pidItem.cmd)).map(
-        (pidItem) => pidItem.pid
+        (pidItem) => pidItem.pid,
       ),
     );
     // merge results
