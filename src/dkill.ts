@@ -44,7 +44,7 @@ export async function dkill(
   }
 
   // find names
-  if (opts?.includeCmds && Deno.build.os === 'linux') {
+  if (opts?.includeCmds) {
     const cmds = await pidToCmd(
       allPidsToKill.filter((pidItem) => (!pidItem.proc || !pidItem.cmd)).map(
         (pidItem) => pidItem.pid

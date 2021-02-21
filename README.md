@@ -13,13 +13,13 @@
 ### Run directly
 
 ```
-deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@0.4.0/cli.ts
+deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@0.5.0/cli.ts
 ```
 
 ### Install
 
 ```
-deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@0.4.0/cli.ts
+deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@0.5.0/cli.ts
 ```
 
 You can then access use it using command `dkill`
@@ -59,25 +59,29 @@ source code for info
 
 ## Support
 
-- Windows
+### Windows
   - [x] port
   - [x] pid
   - [ ] process
-- Linux
+> On windows, to retrieve the command line, Powershell is used, which requires windows 8 or above.
+
+### Linux
   - [x] port
   - [x] pid
   - [ ] process
-- Mac
+> On linux the cmd `ss` is used, which works on ubuntu 16.04 and above. 
+
+### Mac
+Not implemented. PR welcome.
   - [ ] port
   - [ ] pid
   - [ ] process
 
 ## TODOs
 
-- [ ] provide process names killed
 - [ ] kill by process name
-- [ ] supply multiple values to cli in on go
 - [ ] on linux check if `ss` is present.
+- [ ] on windows check if `powershell` is present.
 
 ## Inspiration
 
