@@ -12,8 +12,14 @@ export async function pidToCmd(pids: number[]): Promise<CmdItem[]> {
   const resultsObject: { [pid: string]: CmdItem } = {};
 
   if (os === "windows") {
-    console.log("Platform not supported yet");
-    throw Error("Not implemented yet");
+    const outJsonString = await runCmd(["powershell.exe", "Get-CimInstance Win32_Process | select processid,ProcessName,commandline | ConvertTo-Json"]);
+
+    const outJson: {processid: number, ProcessName: string, commandline: string}[] = JSON.parse(outJsonString)
+    outJson.filter(item  => pids.includes(item.processid)).forEach(item => {
+      resultsObject[item.processid] = { pid: item.processid, proc: item.ProcessName, cmd: item.commandline };
+    })
+
+
   } else if (os === "linux") {
     // const outString = await runCmd(['ps', `-o comm,command --no-header -p ${pids.join(' ')}`]);
     // For some reason the above command return empty,

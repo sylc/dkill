@@ -59,15 +59,20 @@ source code for info
 
 ## Support
 
-- Windows
+### Windows
   - [x] port
   - [x] pid
   - [ ] process
-- Linux
+> On windows, to retrieve the command line, Powershell is used, which requires windows 8 or above.
+
+### Linux
   - [x] port
   - [x] pid
   - [ ] process
-- Mac
+> On linux the cmd `ss` is used, which works on ubuntu 16.04 and above. 
+
+### Mac
+Not implemented. PR welcome.
   - [ ] port
   - [ ] pid
   - [ ] process
@@ -76,6 +81,7 @@ source code for info
 
 - [ ] kill by process name
 - [ ] on linux check if `ss` is present.
+- [ ] on windows check if `powershell` is present.
 
 ## Inspiration
 
