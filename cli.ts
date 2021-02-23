@@ -25,13 +25,21 @@ await new Command()
     "Print out the command to upgrade if a new version is found. This will not process any other command",
     {
       standalone: true,
-    })
+    },
+  )
   .action(
-    async (opts: { verbose: boolean; dryrun: boolean, upgrade: boolean }, targets: string[]) => {
-
+    async (
+      opts: { verbose: boolean; dryrun: boolean; upgrade: boolean },
+      targets: string[],
+    ) => {
       if (opts.upgrade) {
         // upgrading version.
-        await upgrader({packageName: 'dkill', currentVersion: version, denoLand: true, nestLand: true})
+        await upgrader({
+          packageName: "dkill",
+          currentVersion: version,
+          denoLand: true,
+          nestLand: true,
+        });
         return;
       }
 

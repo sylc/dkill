@@ -5,16 +5,16 @@ export async function upgrader(config: {
   nestLand?: boolean;
 }) {
   // try to find the install script
-  console.log('Run ONE of the below commands')
+  console.log("Run ONE of the below commands");
   if (config.denoLand) {
     const versions = await (
       await fetch(
-        `https://cdn.deno.land/${config.packageName}/meta/versions.json`
+        `https://cdn.deno.land/${config.packageName}/meta/versions.json`,
       )
     ).json();
     if (config.currentVersion !== versions.latest) {
       console.log(
-        `deno.land: deno install --unstable --allow-run --allow-net https://deno.land/x/${config.packageName}@${versions.latest}/cli.ts -f`
+        `deno.land: deno install --unstable --allow-run --allow-net https://deno.land/x/${config.packageName}@${versions.latest}/cli.ts -f`,
       );
     } else {
       console.log("Already up to date from deno.land");
@@ -24,7 +24,7 @@ export async function upgrader(config: {
     const res = await fetch("https://nest.land/api/package-client", {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ data: { name: config.packageName } }),
     });
@@ -54,9 +54,12 @@ export async function upgrader(config: {
     //         "createdAt": "2021-02-06T12:40:59.473Z"
     //     }
     // }
-    if (`${config.packageName}@${config.currentVersion}` !== info.body.latestVersion) {
+    if (
+      `${config.packageName}@${config.currentVersion}` !==
+        info.body.latestVersion
+    ) {
       console.log(
-        `nest.land: deno install --unstable --allow-run --allow-net https://x.nest.land/${info.body.latestVersion}/cli.ts -f`
+        `nest.land: deno install --unstable --allow-run --allow-net https://x.nest.land/${info.body.latestVersion}/cli.ts -f`,
       );
     } else {
       console.log("Already up to date from nest.land");

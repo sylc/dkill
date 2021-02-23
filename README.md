@@ -22,7 +22,8 @@ deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@v0.5.1/cli
 deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@v0.5.1/cli.ts
 ```
 
-or you can use deno.land 
+or you can use deno.land
+
 ```
 deno install --unstable --allow-run --allow-net https://deno.land/x/dkill@v0.5.1/cli.ts
 ```
