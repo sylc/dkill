@@ -1,11 +1,11 @@
-[![nest badge](https://nest.land/badge.svg)](https://nest.land/package/your-module)
+[![nest badge](https://nest.land/badge.svg)](https://nest.land/package/dkill)
 
 <h1 align="center">
   🎯 dkill
 </h1>
 
 <p align="center">
-  <b>kill processes and ports for Deno 🦕</b>
+  <b>kill processes by pid and ports for Deno 🦕</b>
 </p>
 
 ## CLI Usage
@@ -13,13 +13,19 @@
 ### Run directly
 
 ```
-deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@0.5.0/cli.ts
+deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@v0.5.1/cli.ts
 ```
 
 ### Install
 
 ```
-deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@0.5.0/cli.ts
+deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@v0.5.1/cli.ts
+```
+
+or you can use deno.land
+
+```
+deno install --unstable --allow-run --allow-net https://deno.land/x/dkill@v0.5.1/cli.ts
 ```
 
 You can then access use it using command `dkill`
