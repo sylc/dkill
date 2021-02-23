@@ -1,5 +1,6 @@
 import { Command } from "./deps.ts";
 import { dkill } from "./mod.ts";
+import { upgrader } from "./src/upgrader.ts";
 import { version } from "./version.ts";
 
 await new Command()
@@ -13,14 +14,27 @@ await new Command()
      
     You can specify multiple targets at once: 'dkill :5000 :3000 164'`,
   )
-  .arguments("<targets...:string>")
+  .arguments("<targets...>")
   .option("-v, --verbose", "Increase verbosity")
   .option(
     "-d, --dryrun",
     "Dry run, List the pids that would have been killed. Does not kill anything",
   )
+  .option(
+    "-u, --upgrade",
+    "Print out the command to upgrade if a new version is found. This will not process any other command",
+    {
+      standalone: true,
+    })
   .action(
-    async (opts: { verbose: boolean; dryrun: boolean }, targets: string[]) => {
+    async (opts: { verbose: boolean; dryrun: boolean, upgrade: boolean }, targets: string[]) => {
+
+      if (opts.upgrade) {
+        // upgrading version.
+        await upgrader({packageName: 'dkill', currentVersion: version, denoLand: true, nestLand: true})
+        return;
+      }
+
       const ports: number[] = [];
       const pids: number[] = [];
       const procs: string[] = [];

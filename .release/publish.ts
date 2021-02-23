@@ -3,7 +3,7 @@ import { version } from "../version.ts";
 
 const config = {
   name: "dkill",
-  description: "Deno cli to kill processes and ports",
+  description: "Deno cli to kill processes by pid and ports",
   version,
   entry: "./mod.ts",
   homepage: "https://github.com/sylc/dkill",
