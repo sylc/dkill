@@ -14,7 +14,7 @@ export async function upgrader(config: {
     ).json();
     if (config.currentVersion !== versions.latest) {
       console.log(
-        `deno.land: deno install --unstable --allow-run --allow-net https://deno.land/x/${config.packageName}@${versions.latest}/cli.ts -f`,
+        `deno.land: deno install -f --unstable --allow-run --allow-net https://deno.land/x/${config.packageName}@${versions.latest}/cli.ts`,
       );
     } else {
       console.log("Already up to date from deno.land");
@@ -59,7 +59,7 @@ export async function upgrader(config: {
         info.body.latestVersion
     ) {
       console.log(
-        `nest.land: deno install --unstable --allow-run --allow-net https://x.nest.land/${info.body.latestVersion}/cli.ts -f`,
+        `nest.land: deno install -f --unstable --allow-run --allow-net https://x.nest.land/${info.body.latestVersion}/cli.ts`,
       );
     } else {
       console.log("Already up to date from nest.land");
