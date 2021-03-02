@@ -13,19 +13,19 @@
 ### Run directly
 
 ```
-deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@v0.6.0/cli.ts
+deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@v0.6.1/cli.ts
 ```
 
 ### Install
 
 ```
-deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@v0.6.0/cli.ts
+deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@v0.6.1/cli.ts
 ```
 
 or you can use deno.land
 
 ```
-deno install --unstable --allow-run --allow-net https://deno.land/x/dkill@v0.6.0/cli.ts
+deno install --unstable --allow-run --allow-net https://deno.land/x/dkill@v0.6.1/cli.ts
 ```
 
 You can then access use it using command `dkill`
@@ -39,9 +39,9 @@ Usage:   dkill <targets...>
   Description:
 
     Kill any processes by
-         - port: add a semicolon in front to define it as a port. ex: 'dkill :3000'
-         - pid: a valid integer. ex: 'dkill 12654'
-         - process name: not implemented yet
+      - port: Prefix port number by a colon. ex: 'dkill :3000'
+      - pid: A valid integer. ex: 'dkill 12654'
+      - process name: A string ex: 'dkill Code.exe'
 
         You can specify multiple targets at once. ex: 'dkill :5000 :3000 164'
 
@@ -56,29 +56,22 @@ Usage:   dkill <targets...>
 ## Programatic Usage
 
 mod.ts exports multiple functions that can be used programmatically. Check
-source code for info
+source code for more info
 
 - dkill(targets: { pids?: number[]; ports?: number[]; procs?: string[]; },
   opts?: { verbose?: boolean, dryrun?: boolean })
 - port2pid()
 - killPids()
+- 
 
 ## Support
 
 ### Windows
 
-- [x] port
-- [x] pid
-- [ ] process
-
 > On windows, to retrieve the command line, Powershell is used, which requires
 > windows 8 or above.
 
 ### Linux
-
-- [x] port
-- [x] pid
-- [ ] process
 
 > On linux the cmd `ss` is used, which works on ubuntu 16.04 and above.
 
@@ -92,9 +85,9 @@ Not implemented. PR welcome.
 
 ## TODOs
 
-- [ ] kill by process name
-- [ ] on linux check if `ss` is present.
 - [ ] on windows check if `powershell` is present.
+- [ ] on linux check if `ss` is present.
+- [ ] improve docs for submodule
 
 ## Inspiration
 

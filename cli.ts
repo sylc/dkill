@@ -9,9 +9,9 @@ await new Command()
   .version(version)
   .description(
     `Kill any processes by 
-     - port: add a semicolon in front to define it as a port. ex: 'dkill :3000'
-     - pid: a valid integer. ex: 'dkill 12654'
-     - process name. ex: 'dkill Code.exe'
+     - port: Prefix port number by a colon. ex: 'dkill :3000'
+     - pid: A valid integer. ex: 'dkill 12654'
+     - process name: A string ex: 'dkill Code.exe'
      
     You can specify multiple targets at once: 'dkill node.exe :5000 :3000 164'`,
   )
