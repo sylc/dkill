@@ -73,7 +73,7 @@ export async function upgrader(config: {
       `${config.packageName}@${config.currentVersion}` !==
         info.body.latestVersion
     ) {
-      const newFlags = await fetchNewFlags(`https://deno.land/x/${config.packageName}@${versions.latest}/version.ts`);
+      const newFlags = await fetchNewFlags(`https://x.nest.land/${info.body.latestVersion}/version.ts`);
       console.log(
         `nest.land: deno install -f ${newFlags.join(' ')} https://x.nest.land/${info.body.latestVersion}/cli.ts`,
       );
