@@ -1,7 +1,8 @@
 import { KillPids, pidToCmd, portToPid } from "../mod.ts";
+import { procToPid } from "./procToPid.ts";
 import { setVerbose, verbose } from "./utils/verbose.ts";
 
-interface PidItem {
+interface PidToKill {
   pid: number;
   proc?: string;
   cmd?: string;
@@ -21,7 +22,7 @@ export async function dkill(
 
   const { pids, ports, procs } = targets;
 
-  let allPidsToKill: PidItem[] = [];
+  let allPidsToKill: PidToKill[] = [];
   pids?.forEach((pid) => {
     allPidsToKill.push({ pid });
   });
@@ -39,9 +40,12 @@ export async function dkill(
 
   // processes
   if (procs && procs.length) {
-    console.log("Process name input not implemented yet");
-    return;
+    const pidsOfProc = await procToPid(procs);
+    allPidsToKill = allPidsToKill.concat(pidsOfProc);
   }
+
+  // remove duplicates
+  // TODO
 
   // find names
   if (opts?.includeCmds) {

@@ -7,20 +7,18 @@ export async function KillPids(pids: number[], opts?: { verbose?: boolean }) {
   // Ensure no duplicates.
   const uniqPids = [...new Set(pids)];
 
-  for (const pid of pids) {
+  for (const pid of uniqPids) {
     try {
+      let cmdArr = [];
       if (os === "windows") {
-        const cmdArr = ["cmd", "/c", `taskkill /PID ${pid} /F`];
-        await runCmd(cmdArr, opts?.verbose);
-        pidKilled.push(pid);
+        cmdArr = ["cmd", "/c", `taskkill /PID ${pid} /F`];
       } else if (os === "linux") {
-        const cmdArr = ["kill", "-9", `${pid}`];
-        await runCmd(cmdArr, opts?.verbose);
-        pidKilled.push(pid);
+        cmdArr = ["kill", "-9", `${pid}`];
       } else {
-        console.log("Platform not supported yet");
         throw Error("Platform not supported yet");
       }
+      await runCmd(cmdArr, opts?.verbose);
+      pidKilled.push(pid);
     } catch (err) {
       console.log(`Failed to kill pid ${pid}`);
       console.log(err);
