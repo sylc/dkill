@@ -1,4 +1,4 @@
-export const version = "v0.6.1";
+export const version = "v0.6.2";
 
 // List of flags required to run the cli
 // experiemtnal used by upgrader
