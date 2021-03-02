@@ -13,21 +13,23 @@ await new Command()
      - pid: a valid integer. ex: 'dkill 12654'
      - process name. ex: 'dkill Code.exe'
      
-    You can specify multiple targets at once: 'dkill node.exe :5000 :3000 164'`
+    You can specify multiple targets at once: 'dkill node.exe :5000 :3000 164'`,
   )
   .arguments("<targets...>")
-  .option("-i, --interactive", "Interactive mode, only on linux", { standalone: true })
+  .option("-i, --interactive", "Interactive mode, only on linux", {
+    standalone: true,
+  })
   .option("-v, --verbose", "Increase verbosity")
   .option(
     "-d, --dryrun",
-    "Dry run, List the pids that would have been killed. Does not kill anything"
+    "Dry run, List the pids that would have been killed. Does not kill anything",
   )
   .option(
     "-u, --upgrade",
     "Print out the command to upgrade if a new version is found. This will not process any other command",
     {
       standalone: true,
-    }
+    },
   )
   .action(
     async (
@@ -37,7 +39,7 @@ await new Command()
         upgrade: boolean;
         interactive: boolean;
       },
-      targets: string[]
+      targets: string[],
     ) => {
       if (opts.upgrade) {
         // upgrading version.
@@ -55,9 +57,11 @@ await new Command()
       const procs: string[] = [];
 
       if (opts.interactive) {
-        if (Deno.build.os === 'windows') {
-          console.warn('** On windows, this is not working nicely because deno does not output correctly unicode. ** ')
-          console.warn('For selecting, use letter u and d')
+        if (Deno.build.os === "windows") {
+          console.warn(
+            "** On windows, this is not working nicely because deno does not output correctly unicode. ** ",
+          );
+          console.warn("For selecting, use letter u and d");
         }
         // list processes
         const pList = await procList();
@@ -94,7 +98,7 @@ await new Command()
           verbose: opts.verbose,
           dryrun: opts.dryrun,
           includeCmds: true,
-        }
+        },
       );
 
       if (killed && killed.length) {
@@ -105,6 +109,6 @@ await new Command()
       } else {
         console.log("No process found");
       }
-    }
+    },
   )
   .parse(Deno.args);
