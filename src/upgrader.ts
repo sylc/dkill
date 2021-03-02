@@ -4,7 +4,6 @@ async function fetchNewFlags(url: string) {
 
   const parsed = versionText.match(/denoFlags =[\s\S]*];/);
   if (!parsed) throw Error("Cannot parse flags");
-  console.log(parsed[0].slice("denoFlags =".length, parsed[0].length - 1));
   const flags = JSON.parse(
     parsed[0].slice("denoFlags =".length, parsed[0].length - 1),
   );
