@@ -1,4 +1,4 @@
-import { procList } from "./procList.ts";
+import { procList } from "../mod.ts";
 import { PidItem } from "./utils/types.ts";
 
 export async function procToPid(procs: string[]): Promise<PidItem[]> {

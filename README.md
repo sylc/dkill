@@ -28,7 +28,7 @@ or you can use deno.land
 deno install --unstable --allow-run --allow-net https://deno.land/x/dkill@v0.6.2/cli.ts
 ```
 
-You can then access use it using command `dkill`
+You can then use it using command `dkill`
 
 ```
 $ dkill --help
@@ -60,9 +60,11 @@ source code for more info
 
 - dkill(targets: { pids?: number[]; ports?: number[]; procs?: string[]; },
   opts?: { verbose?: boolean, dryrun?: boolean })
-- port2pid()
-- killPids()
-- 
+- killPids(): Kill an array of pid
+- pidToCmd(): get the command that started a pid
+- portToPid(): find the pid go a given port
+- procList(): list all process running
+- procToPid(): find the pid for a given process name
 
 ## Support
 

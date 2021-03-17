@@ -1,5 +1,4 @@
-import { KillPids, pidToCmd, portToPid } from "../mod.ts";
-import { procToPid } from "./procToPid.ts";
+import { KillPids, pidToCmd, portToPid, procToPid } from "../mod.ts";
 import { setVerbose, verbose } from "./utils/verbose.ts";
 
 interface PidToKill {
