@@ -1,2 +1,2 @@
-export { Command } from "https://x.nest.land/cliffy@0.17.2/command/mod.ts";
-export { Checkbox } from "https://x.nest.land/cliffy@0.17.2/prompt/mod.ts";
+export { Command } from "https://deno.land/x/cliffy@v0.18.2/command/mod.ts";
+export { Checkbox } from "https://deno.land/x/cliffy@v0.18.2/prompt/mod.ts";
