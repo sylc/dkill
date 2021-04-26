@@ -13,19 +13,19 @@
 ### Run directly
 
 ```
-deno run --unstable --allow-run --allow-net https://x.nest.land/dkill@v0.6.2/cli.ts
+deno run --unstable --allow-run --allow-net https://deno.land/dkill@v0.6.3/cli.ts
 ```
 
 ### Install
 
 ```
-deno install --unstable --allow-run --allow-net https://x.nest.land/dkill@v0.6.2/cli.ts
+deno install --unstable --allow-run --allow-net https://deno.land/x/dkill@v0.6.3/cli.ts
 ```
 
-or you can use deno.land
+or you can use nest.land
 
 ```
-deno install --unstable --allow-run --allow-net https://deno.land/x/dkill@v0.6.2/cli.ts
+deno install --unstable --allow-run --allow-net https://x.nest.land/x/dkill@v0.6.3/cli.ts
 ```
 
 You can then use it using command `dkill`
