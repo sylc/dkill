@@ -1,4 +1,4 @@
-import { publish } from "https://x.nest.land/eggs@0.3.4/src/commands/publish.ts";
+import { publish } from "https://x.nest.land/eggs@0.3.6/src/commands/publish.ts";
 import { version } from "../version.ts";
 
 const config = {
