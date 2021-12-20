@@ -1,26 +1,18 @@
 /**
  * webserver.ts
  */
-import { serve } from "https://deno.land/std@0.86.0/http/server.ts";
+import { serve } from "https://deno.land/std@0.118.0/http/server.ts";
 
-const server1 = serve({ hostname: "0.0.0.0", port: 8080 });
-console.log(`HTTP webserver1 running on port :8080`, Deno.build.os);
+const port = 8080;
 
-const server2 = serve({ hostname: "0.0.0.0", port: 3000 });
-console.log(`HTTP webserver1 running on port :3000`, Deno.build.os);
+const handler = (request: Request): Response => {
+  let body = "Your user-agent is:\n\n";
+  body += request.headers.get("user-agent") || "Unknown";
 
-for await (const request of server1) {
-  let bodyContent = "Your user-agent is:\n\n";
-  bodyContent += request.headers.get("user-agent") || "Unknown";
+  return new Response(body, { status: 200 });
+};
 
-  request.respond({ status: 200, body: bodyContent });
-}
-
-for await (const request of server2) {
-  let bodyContent = "Your user-agent is:\n\n";
-  bodyContent += request.headers.get("user-agent") || "Unknown";
-
-  request.respond({ status: 200, body: bodyContent });
-}
+console.log(`HTTP webserver running. Access it at: http://localhost:8080/`);
+await serve(handler, { port });
 
 // deno run -A ./src/tests/utils.ts
