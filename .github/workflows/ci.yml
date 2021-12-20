@@ -2,7 +2,7 @@ name: GitHub Actions Demo
 on: [push]
 jobs:
   dkill-test:
-    runs-on: [ubuntu-latest, windows-latest]
+    runs-on: ['ubuntu-latest', 'windows-latest']
     steps:
       - uses: denoland/setup-deno@v1
         with:
