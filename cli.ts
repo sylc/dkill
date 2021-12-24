@@ -48,7 +48,6 @@ await new Command()
           packageName: "dkill",
           currentVersion: version,
           denoLand: true,
-          nestLand: true,
         });
         return;
       }
