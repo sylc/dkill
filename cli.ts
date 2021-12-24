@@ -59,7 +59,9 @@ await new Command()
 
       if (opts.interactive) {
         if (Deno.build.os === "windows") {
-          console.warn(yellow("** ON windows you cannot navigate up/down. use filter ** "));
+          console.warn(
+            yellow("** ON windows you cannot navigate up/down. use filter ** "),
+          );
         }
         // list processes
         const pList = await procList();
@@ -69,7 +71,7 @@ await new Command()
             name: `${item.pid} | ${item.proc} | ${item.cmd}`,
             value: `${item.pid}`,
           })),
-          search: true
+          search: true,
         });
         pickedProcesses.forEach((p) => pids.push(+p));
       } else {

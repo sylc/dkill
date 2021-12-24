@@ -33,11 +33,11 @@ Deno.test("killing by port", async () => {
   });
 
   // give time fo the webserver to start and the port be discoverable
-  await delay(1000)
+  await delay(1000);
 
   // call dkill
   const pDkill = Deno.run({
-    cmd: ["deno", "run", "-A", "--unstable", "./cli.ts", ':8080'],
+    cmd: ["deno", "run", "-A", "--unstable", "./cli.ts", ":8080"],
   });
   // wait dkill finishes
   await pDkill.status();
@@ -50,5 +50,4 @@ Deno.test("killing by port", async () => {
   pDkill.close();
 
   assertNotEquals(status.code, 0);
-
 });
