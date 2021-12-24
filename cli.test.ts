@@ -1,6 +1,5 @@
 // deno test -A
 import {
-  assertEquals,
   assertNotEquals,
 } from "https://deno.land/std@0.118.0/testing/asserts.ts";
 import { delay } from "https://deno.land/std@0.118.0/async/mod.ts";
