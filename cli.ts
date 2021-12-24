@@ -1,3 +1,4 @@
+import { yellow } from "https://deno.land/std@0.118.0/fmt/colors.ts";
 import { Checkbox, Command } from "./deps.ts";
 import { dkill } from "./mod.ts";
 import { procList } from "./src/procList.ts";
@@ -16,7 +17,7 @@ await new Command()
     You can specify multiple targets at once: 'dkill node.exe :5000 :3000 164'`,
   )
   .arguments("<targets...>")
-  .option("-i, --interactive", "Interactive mode, only on linux", {
+  .option("-i, --interactive", "Interactive mode", {
     standalone: true,
   })
   .option("-v, --verbose", "Increase verbosity")
@@ -58,19 +59,17 @@ await new Command()
 
       if (opts.interactive) {
         if (Deno.build.os === "windows") {
-          console.warn(
-            "** On windows, this is not working nicely because deno does not output correctly unicode. ** ",
-          );
-          console.warn("For selecting, use letter u and d");
+          console.warn(yellow("** ON windows you cannot navigate up/down. use filter ** "));
         }
         // list processes
         const pList = await procList();
         const pickedProcesses: string[] = await Checkbox.prompt({
-          message: "Pick some processes",
+          message: "Pick processes to kill",
           options: pList.map((item) => ({
             name: `${item.pid} | ${item.proc} | ${item.cmd}`,
             value: `${item.pid}`,
           })),
+          search: true
         });
         pickedProcesses.forEach((p) => pids.push(+p));
       } else {

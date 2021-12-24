@@ -1,5 +1,3 @@
-[![nest badge](https://nest.land/badge.svg)](https://nest.land/package/dkill)
-
 <h1 align="center">
   🎯 dkill
 </h1>
@@ -13,19 +11,13 @@
 ### Run directly
 
 ```
-deno run --unstable --allow-run --allow-net https://deno.land/dkill@v0.6.3/cli.ts
+deno run --unstable --allow-run --allow-net https://deno.land/dkill@v0.6.4/cli.ts
 ```
 
 ### Install
 
 ```
-deno install --unstable --allow-run --allow-net https://deno.land/x/dkill@v0.6.3/cli.ts
-```
-
-or you can use nest.land
-
-```
-deno install --unstable --allow-run --allow-net https://x.nest.land/x/dkill@v0.6.3/cli.ts
+deno install --unstable --allow-run --allow-net https://deno.land/x/dkill@v0.6.4/cli.ts
 ```
 
 You can then use it using command `dkill`
