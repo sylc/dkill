@@ -3,6 +3,7 @@ on: [push]
 jobs:
   dkill-test:
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 3
     strategy:
       matrix: 
         os: [ubuntu-latest, windows-latest]
