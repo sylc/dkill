@@ -3,11 +3,20 @@ import { Checkbox, Command } from "./deps.ts";
 import { dkill } from "./mod.ts";
 import { procList } from "./src/procList.ts";
 import { upgrader } from "./src/upgrader.ts";
-import { version } from "./version.ts";
+import { assertMinVersion } from "./src/utils/versions.ts";
+
+import vJson from "./version.json" assert { type: "json" };
+
+// check minimum version of deno 1.17.0
+const minVRequired = "1.17.0";
+if (!assertMinVersion(Deno.version.deno, minVRequired)) {
+  console.error(`Please upgrade deno. min version required: ${minVRequired}`);
+  Deno.exit(1);
+}
 
 await new Command()
   .name("dkill")
-  .version(version)
+  .version(vJson.version)
   .description(
     `Kill any processes by 
      - port: Prefix port number by a colon. ex: 'dkill :3000'
@@ -46,7 +55,7 @@ await new Command()
         // upgrading version.
         await upgrader({
           packageName: "dkill",
-          currentVersion: version,
+          currentVersion: vJson.version,
           denoLand: true,
         });
         return;

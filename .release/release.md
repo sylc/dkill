@@ -1,11 +1,8 @@
-
 Need to automate this
 
-- update **version in version.ts**
-- push tag
-```
-git tag v0.6.5
-git push origin v0.6.5
-```
+deno install -A -f --unstable ../../OpenSource/release/release.ts
+branch: add_regex_version_file
 
-maybe use `release`
+then
+
+`release`
