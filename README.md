@@ -53,8 +53,6 @@ source code for more info
 
 See [docs](https://doc.deno.land/https://deno.land/x/dkill/mod.ts)
 
-- procToPid(): find the pid for a given process name
-
 ## Support
 
 ### Windows
