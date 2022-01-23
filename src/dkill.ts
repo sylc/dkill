@@ -9,13 +9,25 @@ interface PidToKill {
   killed?: boolean;
 }
 
+/**
+ * invoke dKill
+ * @param {object} targets
+ * @param {number[]} [targets.pids] array of pids
+ * @param {number[]} [targets.ports] array of ports number 
+ * @param {string[]} [targets.procs] array of process names 
+ * @param {object} [opts] opts
+ * @param {boolean} [opts.verbose] enable verbose
+ * @param {boolean} [opts.dryrun] enable dryrun
+ * @param {boolean} [opts.includeCmds] show commands that launched the process
+ * @returns 
+ */
 export async function dkill(
   targets: {
     pids?: number[];
     ports?: number[];
     procs?: string[];
   },
-  opts?: { verbose?: boolean; dryrun?: boolean; includeCmds: boolean },
+  opts?: { verbose?: boolean; dryrun?: boolean; includeCmds?: boolean },
 ) {
   setVerbose(opts?.verbose);
 

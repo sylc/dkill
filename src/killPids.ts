@@ -1,5 +1,12 @@
 import { runCmd } from "./utils/runCmd.ts";
 
+/**
+ * Kill a pids
+ * @param {number[]} pids 
+ * @param {object} [opts]
+ * @param {boolean} [opts.verbose]
+ * @returns 
+ */
 export async function KillPids(pids: number[], opts?: { verbose?: boolean }) {
   const os = Deno.build.os;
   const pidKilled: number[] = [];

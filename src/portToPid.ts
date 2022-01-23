@@ -1,5 +1,11 @@
 import { runCmd } from "./utils/runCmd.ts";
 
+/**
+ * Find the pids using a given port
+ * @param {number} port 
+ * @returns {Promise} array of pid
+ */
+
 export async function portToPid(port: number): Promise<number[]> {
   const os = Deno.build.os;
   if (os === "windows") {

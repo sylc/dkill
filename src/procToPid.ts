@@ -1,6 +1,11 @@
 import { procList } from "../mod.ts";
 import { PidItem } from "./utils/types.ts";
 
+/**
+ * Return Pids for a list of process names
+ * @param {string[]} procs list of process names 
+ * @returns {Promise} Array of pid details
+ */
 export async function procToPid(procs: string[]): Promise<PidItem[]> {
   const os = Deno.build.os;
 

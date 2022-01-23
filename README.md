@@ -51,12 +51,8 @@ Usage:   dkill <targets...>
 mod.ts exports multiple functions that can be used programmatically. Check
 source code for more info
 
-- dkill(targets: { pids?: number[]; ports?: number[]; procs?: string[]; },
-  opts?: { verbose?: boolean, dryrun?: boolean })
-- killPids(): Kill an array of pid
-- pidToCmd(): get the command that started a pid
-- portToPid(): find the pid go a given port
-- procList(): list all process running
+See [docs](https://doc.deno.land/https://deno.land/x/dkill/mod.ts)
+
 - procToPid(): find the pid for a given process name
 
 ## Support

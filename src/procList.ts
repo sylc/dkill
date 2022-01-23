@@ -1,6 +1,10 @@
 import { runCmd } from "./utils/runCmd.ts";
 import { PidItem } from "./utils/types.ts";
 
+/**
+ * list all process running
+ * @returns {Promise} Array of Pid infos
+ */
 export async function procList(): Promise<PidItem[]> {
   const os = Deno.build.os;
 
