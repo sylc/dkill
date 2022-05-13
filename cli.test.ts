@@ -1,8 +1,7 @@
-// deno test -A
 import {
   assertNotEquals,
-} from "https://deno.land/std@0.118.0/testing/asserts.ts";
-import { delay } from "https://deno.land/std@0.118.0/async/mod.ts";
+  delay
+} from "./deps_test.ts";
 
 Deno.test("killing by pid", async () => {
   // create pid

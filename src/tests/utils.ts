@@ -1,7 +1,7 @@
 /**
  * webserver.ts
  */
-import { serve } from "https://deno.land/std@0.118.0/http/server.ts";
+import { serve } from "../../deps_test.ts";
 
 const port = 8080;
 
@@ -14,5 +14,3 @@ const handler = (request: Request): Response => {
 
 console.log(`HTTP webserver running. Access it at: http://localhost:8080/`);
 await serve(handler, { port });
-
-// deno run -A ./src/tests/utils.ts

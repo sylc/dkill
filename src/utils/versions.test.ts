@@ -1,4 +1,4 @@
-import { assert } from "https://deno.land/std@0.118.0/testing/asserts.ts";
+import { assert } from "../../deps_test.ts";
 import { assertMinVersion } from "./versions.ts";
 
 Deno.test("assertMinVersion", () => {

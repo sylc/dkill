@@ -13,9 +13,18 @@ jobs:
         with:
           deno-version: v1.x
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      
       - name: Check out repository code
         uses: actions/checkout@v2
+      
+      - name: lint
+        run: deno lint
+
+      - name: fmt
+        run: deno fmt
+      
       - name: Run Test files in the repository
         run: |
           deno test -A 
+      
       - run: echo "🍏 This job's status is ${{ job.status }}."
