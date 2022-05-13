@@ -14,13 +14,13 @@
 ### Run directly
 
 ```
-deno run --unstable --allow-run --allow-net https://deno.land/x/dkill@0.6.8/cli.ts
+deno run --unstable --allow-run --allow-net https://deno.land/x/dkill@0.6.9/cli.ts
 ```
 
 ### Install
 
 ```
-deno install --unstable --allow-run --allow-net https://deno.land/x/dkill@0.6.8/cli.ts
+deno install --unstable --allow-run --allow-net https://deno.land/x/dkill@0.6.9/cli.ts
 ```
 
 You can then use it using command `dkill`
