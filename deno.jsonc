@@ -1,0 +1,6 @@
+{
+  "tasks": {
+    "test": "deno test -A",
+    "dev": "deno run --unstable --allow-run --allow-net ./cli.ts"
+  }
+}

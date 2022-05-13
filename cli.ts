@@ -42,15 +42,7 @@ await new Command()
     },
   )
   .action(
-    async (
-      opts: {
-        verbose: boolean;
-        dryrun: boolean;
-        upgrade: boolean;
-        interactive: boolean;
-      },
-      targets: string[],
-    ) => {
+    async (opts, targets) => {
       if (opts.upgrade) {
         // upgrading version.
         await upgrader({

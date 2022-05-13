@@ -1,4 +1,6 @@
-[![deno module](https://shield.deno.dev/x/dkill)](https://deno.land/x/dkill) ![deno compatibility](https://shield.deno.dev/deno/^1.17)
+[![deno module](https://shield.deno.dev/x/dkill)](https://deno.land/x/dkill)
+![deno compatibility](https://shield.deno.dev/deno/^1.17)
+
 <h1 align="center">
   🎯 dkill
 </h1>
