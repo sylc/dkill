@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog], and this project adheres to
 [Semantic Versioning].
 
+## [0.6.8] - 2022-05-13
+
 ## [0.6.7] - 2021-12-25
 
 ### Features
@@ -43,6 +45,7 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 [keep a changelog]: https://keepachangelog.com/en/1.0.0/
 [semantic versioning]: https://semver.org/spec/v2.0.0.html
+[0.6.8]: https://github.com/sylc/dkill/compare/0.6.7...0.6.8
 [0.6.7]: https://github.com/sylc/dkill/compare/0.6.6...0.6.7
 [`5430356`]: https://github.com/sylc/dkill/commit/5430356bc4993a6c6ff423579e8582c112b5780f
 [0.6.6]: https://github.com/sylc/dkill/compare/0.6.5...0.6.6
