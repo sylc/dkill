@@ -1,0 +1,12 @@
+{
+  "changelog": {},
+  "github": {
+    "release": true
+  },
+  "regex": {
+    "patterns": [
+      "(?<=@)(.*)(?=\/cli)"
+    ]
+  },
+  "versionFile": {}
+}

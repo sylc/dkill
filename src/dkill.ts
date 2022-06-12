@@ -78,7 +78,7 @@ export async function dkill(
     killed: false,
   }));
   if (!opts?.dryrun) {
-    const killedPids = await KillPids(
+    const killedPids = KillPids(
       allPidsToKill.map((pidItem) => pidItem.pid),
     );
     allPidsToKill = allPidsToKill.map((pidItem) => ({
