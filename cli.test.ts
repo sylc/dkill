@@ -1,7 +1,4 @@
-import {
-  assertNotEquals,
-  delay
-} from "./deps_test.ts";
+import { assertNotEquals, delay } from "./deps_test.ts";
 
 Deno.test("killing by pid", async () => {
   // create pid

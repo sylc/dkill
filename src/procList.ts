@@ -61,13 +61,13 @@ export async function procList(): Promise<PidItem[]> {
     const outStringCmd = await runCmd(["ps", "-eF"]);
 
     // outstring example
-    // scau       494     8  0 1073831 25724 5 21:49 pts/0    00:00:00 deno run -A ./src/tests/utils.ts
+    // syl       494     8  0 1073831 25724 5 21:49 pts/0    00:00:00 deno run -A ./src/tests/utils.ts
     const parsedLinesCmd = outStringCmd
       .split("\n")
       .map((line) => line.match(/\S+/g) || []);
 
     // parsedLines
-    // [ [ "scau", "494", "8", "0", "1073831","25724","5","21:49","pts/0","00:00:00","deno","run","-A","./src/tests/utils.ts" ], [] ]
+    // [ [ "syl", "494", "8", "0", "1073831","25724","5","21:49","pts/0","00:00:00","deno","run","-A","./src/tests/utils.ts" ], [] ]
 
     // remove first row of titles
     parsedLinesCmd.shift();
