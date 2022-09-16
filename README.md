@@ -58,21 +58,13 @@ See [docs](https://doc.deno.land/https://deno.land/x/dkill/mod.ts)
 
 ### Linux
 
-> On linux the cmd `ss` is used, which works on ubuntu 16.04 and above.
+> On linux, the cmd `ss` is used, which works on ubuntu 16.04 and above.
 
 ### Mac
 
-Not implemented. PR welcome.
+> On macos, the command `lsof -t -i` is used.
 
-- [ ] port
-- [ ] pid
-- [ ] process
-
-## TODOs
-
-- [ ] on windows check if `powershell` is present.
-- [ ] on linux check if `ss` is present.
-- [ ] improve docs for submodule
+listing the exact command is curretly not implemented on mac
 
 ## Inspiration
 
