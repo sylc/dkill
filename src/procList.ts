@@ -28,7 +28,7 @@ export async function procList(): Promise<PidItem[]> {
         cmd: item.commandline,
       };
     });
-  } else if (os === "linux" || os === "darwin") {
+  } else if (os === "linux") {
     // const outString = await runCmd(['ps', `-o comm,command --no-header -p ${pids.join(' ')}`]);
     // For some reason the above command return empty,
     // while the below is working.
