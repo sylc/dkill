@@ -32,7 +32,7 @@ export async function portToPid(port: number): Promise<number[]> {
       .filter((pid) => Number.isInteger(pid) && pid !== 0); // ensure they are numbers. pid 0 can be ignored
 
     return [...new Set(pids)]; // remove duplicates;
-  } else if (os === "linux") {
+  } else if (os === "linux" || os === "darwin") {
     // -l: listening
     // -p: provide pid
     // -n: provide local address
