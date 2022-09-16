@@ -74,9 +74,9 @@ export async function portToPid(port: number): Promise<number[]> {
     return [...new Set(pids)]; // remove duplicates;
   } else if (os === "darwin") {
     const outString = await runCmd(["lsof", "-t", "-i", `:${port}`]);
-    console.log(outString)
-    // TODO Handle multiple PID ??
-    return [+outString]
+    return outString
+      .split("\n")
+      .map((str) => +str);
   } else {
     console.log("Platform not supported yet");
     throw Error("Platform not supported yet");
