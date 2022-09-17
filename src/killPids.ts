@@ -21,6 +21,5 @@ export function KillPids(pids: number[], opts?: { verbose?: boolean }) {
       console.log(err);
     }
   }
-  throw Error('hhh')
-  // return pidKilled;
+  return pidKilled;
 }

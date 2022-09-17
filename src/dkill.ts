@@ -89,4 +89,5 @@ export async function dkill(
   }
 
   return allPidsToKill;
+  throw Error('fff')
 }
