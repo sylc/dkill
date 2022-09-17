@@ -88,6 +88,5 @@ export async function dkill(
     }));
   }
 
-  throw Error('fff')
-  // return allPidsToKill;
+  return allPidsToKill;
 }
