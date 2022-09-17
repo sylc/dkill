@@ -35,7 +35,7 @@ Deno.test("killing by port", async () => {
 
   // call dkill
   const pDkill = Deno.run({
-    cmd: ["deno", "run", "-A", "--unstable", "./cli.ts", ":8080"],
+    cmd: ["deno", "run", "-A", "--unstable", "./cli.ts", "--verbose", ":8080"],
   });
   // wait dkill finishes
   const cliStatus = await pDkill.status();
