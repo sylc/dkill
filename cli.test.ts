@@ -47,6 +47,7 @@ Deno.test({
         ":8080",
       ],
     });
+    setTimeout(() => pDkill.kill("SIGTERM"), 2000)
     // wait dkill finishes
     const cliStatus = await pDkill.status();
     pDkill.close();
