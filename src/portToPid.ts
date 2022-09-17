@@ -82,9 +82,9 @@ export async function portToPid(port: number): Promise<number[]> {
     console.log("4##############");
     console.log(outString);
     // throw Error('tets')
-    return outString
-      .split("\n")
-      .map((str) => +str);
+    const res = outString.split("\n").map((str) => +str);
+    console.log('res', res)
+    return res
   } else {
     console.log("Platform not supported yet");
     throw Error("Platform not supported yet");
