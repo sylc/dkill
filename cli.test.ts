@@ -1,4 +1,4 @@
-import { assertNotEquals, delay } from "./deps_test.ts";
+import { assertEquals, assertNotEquals, delay } from "./deps_test.ts";
 
 Deno.test("killing by pid", async () => {
   // create pid
@@ -11,7 +11,7 @@ Deno.test("killing by pid", async () => {
     cmd: ["deno", "run", "-A", "--unstable", "./cli.ts", `${pTest.pid}`],
   });
   // wait dkill finishes
-  await pDkill.status();
+  const cliStatus = await pDkill.status();
 
   // retreive status from test pid
   const status = await pTest.status();
@@ -20,6 +20,8 @@ Deno.test("killing by pid", async () => {
   pTest.close();
   pDkill.close();
 
+  // ensure dkill existed cleanly
+  assertEquals(cliStatus.code, 0);
   assertNotEquals(status.code, 0);
 });
 Deno.test("killing by port", async () => {
@@ -36,14 +38,15 @@ Deno.test("killing by port", async () => {
     cmd: ["deno", "run", "-A", "--unstable", "./cli.ts", ":8080"],
   });
   // wait dkill finishes
-  await pDkill.status();
+  const cliStatus = await pDkill.status();
+  pDkill.close();
+  // ensure dkill existed cleanly
+  assertEquals(cliStatus.code, 0);
 
   // retrieve status from test pid
   const status = await pTest.status();
-
   // close resources
   pTest.close();
-  pDkill.close();
 
   assertNotEquals(status.code, 0);
 });

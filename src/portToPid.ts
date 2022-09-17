@@ -80,9 +80,10 @@ export async function portToPid(port: number): Promise<number[]> {
     console.log("3##############")
     const outString = await runCmd(["lsof", "-t", "-i", `:${port}`]);
     console.log(outString)
-    return outString
-      .split("\n")
-      .map((str) => +str);
+    throw Error('tets')
+    // return outString
+    //   .split("\n")
+    //   .map((str) => +str);
   } else {
     console.log("Platform not supported yet");
     throw Error("Platform not supported yet");
