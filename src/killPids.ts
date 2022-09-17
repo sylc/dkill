@@ -6,6 +6,7 @@
  * @returns
  */
 export function KillPids(pids: number[], opts?: { verbose?: boolean }) {
+  throw Error('hhh')
   const pidKilled: number[] = [];
 
   // Ensure no duplicates.
