@@ -73,18 +73,18 @@ export async function portToPid(port: number): Promise<number[]> {
 
     return [...new Set(pids)]; // remove duplicates;
   } else if (os === "darwin") {
-    console.log("1##############")
-    console.log(await runCmd(["lsof"]))
-    console.log("2##############")
-    console.log(await runCmd(["lsof", "-i",]))
-    console.log("3##############")
-    const outString = await runCmd(["lsof", "-t", `-i:${port}`]);
+    // console.log("1##############")
+    // console.log(await runCmd(["lsof"]))
+    // console.log("2##############")
+    // console.log(await runCmd(["lsof", "-i", "-P"]))
+    // console.log("3##############")
+    const outString = await runCmd(["lsof", "-t", "-P", `-i:${port}`]);
     console.log("4##############")
     console.log(outString)
-    throw Error('tets')
-    // return outString
-    //   .split("\n")
-    //   .map((str) => +str);
+    // throw Error('tets')
+    return outString
+      .split("\n")
+      .map((str) => +str);
   } else {
     console.log("Platform not supported yet");
     throw Error("Platform not supported yet");
