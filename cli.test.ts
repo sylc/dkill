@@ -52,12 +52,13 @@ Deno.test({
     pDkill.close();
     // ensure dkill existed cleanly
     assertEquals(cliStatus.code, 0);
-
+    
     // retrieve status from test pid
     const status = await pTest.status();
     // close resources
     pTest.close();
 
     assertNotEquals(status.code, 0);
+    assertNotEquals(status.code, 5); // check it wasn't a timeout
   },
 });
