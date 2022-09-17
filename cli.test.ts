@@ -28,40 +28,40 @@ Deno.test({
   name: "killing by port",
   fn: async () => {
     // create a webserver
-    // const pTest = Deno.run({
-    //   cmd: ["deno", "run", "-A", "--unstable", "./src/tests/utils.ts"],
-    // });
+    const pTest = Deno.run({
+      cmd: ["deno", "run", "-A", "--unstable", "./src/tests/utils.ts"],
+    });
 
     // give time fo the webserver to start and the port be discoverable
     await delay(5000);
 
     // call dkill
-    const pDkill = Deno.run({
-      cmd: [
-        "deno",
-        "run",
-        "-A",
-        "--unstable",
-        "./cli.ts",
-        "--verbose",
-        ":8080",
-      ],
-    });
-    setTimeout(() => pDkill.kill("SIGTERM"), 2000)
-    // wait dkill finishes
-    const cliStatus = await pDkill.status();
-    pDkill.close();
-    // ensure dkill existed cleanly
-    assertEquals(cliStatus.code, 0);
+    // const pDkill = Deno.run({
+    //   cmd: [
+    //     "deno",
+    //     "run",
+    //     "-A",
+    //     "--unstable",
+    //     "./cli.ts",
+    //     "--verbose",
+    //     ":8080",
+    //   ],
+    // });
+    // setTimeout(() => pDkill.kill("SIGTERM"), 2000)
+    // // wait dkill finishes
+    // const cliStatus = await pDkill.status();
+    // pDkill.close();
+    // // ensure dkill existed cleanly
+    // assertEquals(cliStatus.code, 0);
     
     // throw Error('xxx')
 
-    // // retrieve status from test pid
-    // const status = await pTest.status();
-    // // close resources
-    // pTest.close();
+    // retrieve status from test pid
+    const status = await pTest.status();
+    // close resources
+    pTest.close();
 
-    // assertNotEquals(status.code, 0);
-    // assertNotEquals(status.code, 5); // check it wasn't a timeout
+    assertNotEquals(status.code, 0);
+    assertNotEquals(status.code, 5); // check it wasn't a timeout
   },
 });
