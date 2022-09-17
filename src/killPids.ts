@@ -7,10 +7,10 @@
  */
 export function KillPids(pids: number[], opts?: { verbose?: boolean }) {
   const pidKilled: number[] = [];
-  
+
   // Ensure no duplicates.
   const uniqPids = [...new Set(pids)];
-  
+
   for (const pid of uniqPids) {
     try {
       if (opts?.verbose) console.log(`Killing ${pid} ...`);

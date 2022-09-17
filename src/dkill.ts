@@ -80,7 +80,7 @@ export async function dkill(
   if (!opts?.dryrun) {
     const killedPids = KillPids(
       allPidsToKill.map((pidItem) => pidItem.pid),
-      {verbose: opts?.verbose,}
+      { verbose: opts?.verbose },
     );
     allPidsToKill = allPidsToKill.map((pidItem) => ({
       ...pidItem,

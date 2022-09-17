@@ -79,8 +79,8 @@ export async function portToPid(port: number): Promise<number[]> {
     // console.log(await runCmd(["lsof", "-i", "-P"]))
     // console.log("3##############")
     const outString = await runCmd(["lsof", "-t", "-P", `-i:${port}`]);
-    console.log("4##############")
-    console.log(outString)
+    console.log("4##############");
+    console.log(outString);
     // throw Error('tets')
     return outString
       .split("\n")
