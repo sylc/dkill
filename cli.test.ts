@@ -26,7 +26,6 @@ Deno.test("killing by pid", async () => {
 });
 Deno.test({
   name: "killing by port",
-  ignore: true,
   fn: async () => {
     // create a webserver
     const pTest = Deno.run({
