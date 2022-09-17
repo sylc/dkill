@@ -21,11 +21,11 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       
-      - name: lint
-        run: deno lint
+      # - name: lint
+      #   run: deno lint
 
-      - name: fmt
-        run: deno fmt
+      # - name: fmt
+      #   run: deno fmt
       
       - name: Run Test files in the repository
         run: |

@@ -58,19 +58,19 @@ export async function dkill(
   // remove duplicates
   // TODO
 
-  // find names
-  if (opts?.includeCmds) {
-    const cmds = await pidToCmd(
-      allPidsToKill.filter((pidItem) => (!pidItem.proc || !pidItem.cmd)).map(
-        (pidItem) => pidItem.pid,
-      ),
-    );
-    // merge results
-    allPidsToKill = allPidsToKill.map((pidItem) => {
-      const item = cmds.find((cmdItem) => cmdItem.pid === pidItem.pid);
-      return { ...pidItem, ...item };
-    });
-  }
+  // // find names
+  // if (opts?.includeCmds) {
+  //   const cmds = await pidToCmd(
+  //     allPidsToKill.filter((pidItem) => (!pidItem.proc || !pidItem.cmd)).map(
+  //       (pidItem) => pidItem.pid,
+  //     ),
+  //   );
+  //   // merge results
+  //   allPidsToKill = allPidsToKill.map((pidItem) => {
+  //     const item = cmds.find((cmdItem) => cmdItem.pid === pidItem.pid);
+  //     return { ...pidItem, ...item };
+  //   });
+  // }
 
   // Kill them all, or just pretend
   allPidsToKill = allPidsToKill.map((pidItem) => ({
