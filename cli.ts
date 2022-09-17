@@ -106,6 +106,7 @@ await new Command()
         // TODO improve table output
         // console.table(killed.map(pidItem => ({ ...pidItem, port: `:${pidItem.port}`, killed: pidItem.killed ? 'yes' : 'x'})));
         console.table(killed);
+        console.log(killed)
         opts?.dryrun && console.log("Nothing has been killed");
       } else {
         console.log("No process found");

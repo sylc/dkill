@@ -33,7 +33,7 @@ Deno.test({
     });
 
     // give time fo the webserver to start and the port be discoverable
-    await delay(15000);
+    await delay(5000);
 
     // call dkill
     const pDkill = Deno.run({
@@ -53,6 +53,8 @@ Deno.test({
     // ensure dkill existed cleanly
     assertEquals(cliStatus.code, 0);
     
+    throw Error('xxx')
+
     // retrieve status from test pid
     const status = await pTest.status();
     // close resources
