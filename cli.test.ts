@@ -36,23 +36,22 @@ Deno.test({
     await delay(5000);
 
     // call dkill
-    // const pDkill = Deno.run({
-    //   cmd: [
-    //     "deno",
-    //     "run",
-    //     "-A",
-    //     "--unstable",
-    //     "./cli.ts",
-    //     "--verbose",
-    //     ":8080",
-    //   ],
-    // });
-    // setTimeout(() => pDkill.kill("SIGTERM"), 2000)
-    // // wait dkill finishes
-    // const cliStatus = await pDkill.status();
-    // pDkill.close();
-    // // ensure dkill existed cleanly
-    // assertEquals(cliStatus.code, 0);
+    const pDkill = Deno.run({
+      cmd: [
+        "deno",
+        "run",
+        "-A",
+        "--unstable",
+        "./cli.ts",
+        "--verbose",
+        ":8080",
+      ],
+    });
+    // wait dkill finishes
+    const cliStatus = await pDkill.status();
+    pDkill.close();
+    // ensure dkill existed cleanly
+    assertEquals(cliStatus.code, 0);
     
     // throw Error('xxx')
 

@@ -76,15 +76,16 @@ export async function portToPid(port: number): Promise<number[]> {
     // console.log("1##############")
     // console.log(await runCmd(["lsof"]))
     // console.log("2##############")
-    // console.log(await runCmd(["lsof", "-i", "-P"]))
+    console.log(await runCmd(["lsof", "-i", "-P"]))
     // console.log("3##############")
-    const outString = await runCmd(["lsof", "-t", "-P", `-i:${port}`]);
+    // const outString = await runCmd(["lsof", "-t", "-P", `-i:${port}`]);
     console.log("4##############");
-    console.log(outString);
+    // console.log(outString);
     // throw Error('tets')
-    return outString
-      .split("\n")
-      .map((str) => +str);
+    return [] 
+    // outString
+    //   .split("\n")
+    //   .map((str) => +str);
   } else {
     console.log("Platform not supported yet");
     throw Error("Platform not supported yet");
