@@ -1,4 +1,3 @@
-import { yellow } from "https://deno.land/std@0.118.0/fmt/colors.ts";
 import { Checkbox, Command } from "./deps.ts";
 import { dkill } from "./mod.ts";
 import { procList } from "./src/procList.ts";
@@ -7,8 +6,8 @@ import { assertMinVersion } from "./src/utils/versions.ts";
 
 import vJson from "./version.json" assert { type: "json" };
 
-// check minimum version of deno 1.17.0
-const minVRequired = "1.17.0";
+// check minimum version of deno
+const minVRequired = "1.29.1";
 if (!assertMinVersion(Deno.version.deno, minVRequired)) {
   console.error(`Please upgrade deno. min version required: ${minVRequired}`);
   Deno.exit(1);
@@ -25,7 +24,7 @@ await new Command()
      
     You can specify multiple targets at once: 'dkill node.exe :5000 :3000 164'`,
   )
-  .arguments("<targets...>")
+  .arguments("<...targets>")
   .option("-i, --interactive", "Interactive mode", {
     standalone: true,
   })
@@ -42,7 +41,7 @@ await new Command()
     },
   )
   .action(
-    async (opts, targets) => {
+    async (opts, ...targets) => {
       if (opts.upgrade) {
         // upgrading version.
         await upgrader({
@@ -58,11 +57,6 @@ await new Command()
       const procs: string[] = [];
 
       if (opts.interactive) {
-        if (Deno.build.os === "windows") {
-          console.warn(
-            yellow("** ON windows you cannot navigate up/down. use filter ** "),
-          );
-        }
         // list processes
         const pList = await procList();
         const pickedProcesses: string[] = await Checkbox.prompt({
