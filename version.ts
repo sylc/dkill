@@ -2,7 +2,6 @@
 // experimental used by upgrader
 // deno-fmt-ignore
 export const denoFlags = [
-  "--unstable",
   "--allow-run",
   "--allow-net"
 ];
