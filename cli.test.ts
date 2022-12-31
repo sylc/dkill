@@ -8,7 +8,7 @@ Deno.test("killing by pid", async () => {
 
   // call dkill
   const pDkill = Deno.run({
-    cmd: ["deno", "run", "-A", "--unstable", "./cli.ts", `${pTest.pid}`],
+    cmd: ["deno", "run", "-A", "./cli.ts", `${pTest.pid}`],
   });
   // wait dkill finishes
   await pDkill.status();
@@ -22,28 +22,37 @@ Deno.test("killing by pid", async () => {
 
   assertNotEquals(status.code, 0);
 });
-Deno.test("killing by port", async () => {
+Deno.test("killing by ports", async () => {
   // create a webserver
-  const pTest = Deno.run({
-    cmd: ["deno", "run", "-A", "--unstable", "./src/tests/utils.ts"],
+  const pTest1 = Deno.run({
+    cmd: ["deno", "run", "-A", "./src/tests/utils.ts"],
   });
+  const pTest2 = Deno.run({
+    cmd: ["deno", "run", "-A", "./src/tests/utils.ts", "8081"],
+  });
+
 
   // give time fo the webserver to start and the port be discoverable
   await delay(5000);
 
   // call dkill
   const pDkill = Deno.run({
-    cmd: ["deno", "run", "-A", "--unstable", "./cli.ts", ":8080"],
+    cmd: ["deno", "run", "-A", "./cli.ts", ":8080", ":8081"],
   });
   // wait dkill finishes
   await pDkill.status();
 
   // retrieve status from test pid
-  const status = await pTest.status();
+  const status1 = await pTest1.status();
+  const status2 = await pTest2.status();
 
   // close resources
-  pTest.close();
+  pTest1.close();
+  pTest2.close();
+
   pDkill.close();
 
-  assertNotEquals(status.code, 0);
+  assertNotEquals(status1.code, 0);
+  assertNotEquals(status2.code, 0);
+
 });
