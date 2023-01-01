@@ -3,8 +3,12 @@ import { assertEquals, assertNotEquals, delay } from "./deps_test.ts";
 Deno.test("killing by pid", async () => {
   // create pid
   const pTest = Deno.run({
-    cmd: ["sleep", "5000"],
+    cmd: ["deno", "run", "-A", "./src/tests/utils.ts"],
+    // cmd: ["sleep", "5000"],
   });
+
+      // give time fo the webserver to start and the port be discoverable
+    await delay(5000);
 
   // call dkill
   const pDkill = Deno.run({
@@ -24,6 +28,9 @@ Deno.test("killing by pid", async () => {
   assertEquals(cliStatus.code, 0);
   assertNotEquals(status.code, 0);
 });
+
+
+
 // Deno.test({
 //   name: "killing by ports",
 //   fn: async () => {
