@@ -3,7 +3,7 @@ import { PidItem } from "./utils/types.ts";
 
 /**
  * list all process running.
- * WARNING. DO NOT USE FOR macos (It returns notthing)
+ * WARNING. DO NOT USE FOR macos (It returns nothing)
  * @returns {Promise} Array of Pid infos
  */
 export async function procList(): Promise<PidItem[]> {

@@ -25,7 +25,7 @@ await new Command()
     You can specify multiple targets at once: 'dkill node.exe :5000 :3000 164'`,
   )
   .arguments("<...targets>")
-  .option("-i, --interactive", "Interactive mode", {
+  .option("-i, --interactive", "Interactive mode (Not available on MacOS)", {
     standalone: true,
   })
   .option("-v, --verbose", "Increase verbosity")
@@ -57,6 +57,10 @@ await new Command()
       const procs: string[] = [];
 
       if (opts.interactive) {
+        if (Deno.build.os === "darwin") {
+          console.error("Not implemented on macos");
+          Deno.exit(1);
+        }
         // list processes
         const pList = await procList();
         const pickedProcesses: string[] = await Checkbox.prompt({
