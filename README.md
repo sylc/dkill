@@ -1,5 +1,5 @@
 [![deno module](https://shield.deno.dev/x/dkill)](https://deno.land/x/dkill)
-![deno compatibility](https://shield.deno.dev/deno/^1.21.3)
+![deno compatibility](https://shield.deno.dev/deno/^1.29.1)
 
 <h1 align="center">
   🎯 dkill
@@ -49,30 +49,11 @@ source code for more info
 
 See [docs](https://doc.deno.land/https://deno.land/x/dkill/mod.ts)
 
-## Support
+## OS Support
 
-### Windows
-
-> On windows, to retrieve the command line, Powershell is used, which requires
-> windows 8 or above.
-
-### Linux
-
-> On linux the cmd `ss` is used, which works on ubuntu 16.04 and above.
-
-### Mac
-
-Not implemented. PR welcome.
-
-- [ ] port
-- [ ] pid
-- [ ] process
-
-## TODOs
-
-- [ ] on windows check if `powershell` is present.
-- [ ] on linux check if `ss` is present.
-- [ ] improve docs for submodule
+- Windows: Windows 8 or above
+- Linux: On linux the cmd `ss` is used, which works on ubuntu 16.04 and above.
+- Mac: Not implemented. PR welcome.
 
 ## Inspiration
 
