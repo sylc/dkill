@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: CI
 on: [push]
 jobs:
   dkill-test:
@@ -9,8 +9,7 @@ jobs:
         os: [
             # ubuntu-latest,
             # windows-latest, 
-            # macos-latest
-            macos-12
+            macos-latest
           ]
         
     steps:
