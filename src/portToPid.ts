@@ -1,3 +1,4 @@
+import { grepPortMacOS, grepPortWindows } from "./utils/grepPort.ts";
 import { runCmd } from "./utils/runCmd.ts";
 
 /**
@@ -15,21 +16,7 @@ export async function portToPid(port: number): Promise<number[]> {
       `netstat -nao | findstr :${port}`,
     ]);
 
-    // outstring example
-    // TCP    0.0.0.0:3000           0.0.0.0:0              LISTENING       28392
-    const parsedLines = outString
-      .split("\n")
-      .map((line) => line.match(/\S+/g) || []);
-
-    // parsedLines
-    // [ [ "TCP", "0.0.0.0:3000", "0.0.0.0:0", "LISTENING", "28392" ], [] ]
-
-    const pidColumnsIndex = 4;
-
-    const pids = parsedLines
-      .filter((arr) => arr.length !== 0) // filter last line
-      .map((arr) => +arr[pidColumnsIndex]) // extract pids based on columns
-      .filter((pid) => Number.isInteger(pid) && pid !== 0); // ensure they are numbers. pid 0 can be ignored
+    const pids = grepPortWindows(outString);
 
     return [...new Set(pids)]; // remove duplicates;
   } else if (os === "linux") {
@@ -78,19 +65,7 @@ export async function portToPid(port: number): Promise<number[]> {
 
     // COMMAND  PID   USER     FD   TYPE                         DEVICE SIZE/OFF NODE NAME
     // deno     1407  runner   13u  IPv4 0x85fdd397dc6713cf      0t0  TCP *:8081 (LISTEN)
-    const parsedLines = outString.split("\n")
-      .map((line) => line.match(/\S+/g) || []);
-
-    const pidColumnsIndex = 1;
-
-    // remove the headers
-    parsedLines.shift();
-
-    const pids = parsedLines
-      .filter((arr) => arr.length !== 0) // filter invalid arrays
-      .map((arr) => +arr[pidColumnsIndex]) // extract pids based on columns
-      .filter((pid) => Number.isInteger(pid) && pid !== 0); // ensure they are numbers. pid 0 can be ignored
-
+    const pids = grepPortMacOS(outString);
     console.log("res", pids);
     return pids;
   } else {

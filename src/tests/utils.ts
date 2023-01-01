@@ -14,7 +14,7 @@ const handler = (request: Request): Response => {
 };
 
 console.log(`HTTP webserver running. Access it at: http://localhost:${port}/`);
-delay(15000).then(() => {
+delay(25000).then(() => {
   Deno.exit(5);
 });
 
