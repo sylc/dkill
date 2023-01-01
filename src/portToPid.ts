@@ -81,7 +81,7 @@ export async function portToPid(port: number): Promise<number[]> {
     const parsedLines = outString.split("\n")
       .map((line) => line.match(/\S+/g) || []);
 
-    const pidColumnsIndex = 2;
+    const pidColumnsIndex = 1;
 
     // remove the headers
     parsedLines.shift();
