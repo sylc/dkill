@@ -3,5 +3,6 @@
   "deno.lint": true,
   "deno.suggest.imports.hosts": {
     "https://deno.land": true
-  }
+  },
+  "editor.formatOnSave": true
 }

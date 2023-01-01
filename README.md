@@ -53,7 +53,8 @@ See [docs](https://doc.deno.land/https://deno.land/x/dkill/mod.ts)
 
 - Windows: Windows 8 or above
 - Linux: On linux the cmd `ss` is used, which works on ubuntu 16.04 and above.
-- Mac: Not implemented. PR welcome.
+- MacOS: The command `lsof` is used. Interactive mode and listing the exact
+  command is currently not implemented
 
 ## Inspiration
 

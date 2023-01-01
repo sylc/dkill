@@ -2,7 +2,8 @@ import { runCmd } from "./utils/runCmd.ts";
 import { PidItem } from "./utils/types.ts";
 
 /**
- * list all process running
+ * list all process running.
+ * WARNING. DO NOT USE FOR macos (It returns nothing)
  * @returns {Promise} Array of Pid infos
  */
 export async function procList(): Promise<PidItem[]> {
@@ -80,6 +81,8 @@ export async function procList(): Promise<PidItem[]> {
       .forEach((item) => {
         resultsObject[item.pid] = { ...resultsObject[item.pid], cmd: item.cmd };
       });
+  } else if (os === "darwin") {
+    // TODO: skipped for now
   } else {
     throw Error("Platform not supported yet");
   }
