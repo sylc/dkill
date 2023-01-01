@@ -73,28 +73,26 @@ export async function portToPid(port: number): Promise<number[]> {
 
     return [...new Set(pids)]; // remove duplicates;
   } else if (os === "darwin") {
-    console.log("1##############")
-    // console.log(await runCmd(["lsof"]))
-    // console.log("2##############")
-    console.log(await runCmd(["lsof", "-ntP", `-iTCP:${port}`]))
-    // console.log("3##############")
+    console.log(await runCmd(["lsof", "-nwP", `-iTCP:${port}`]));
     const outString = await runCmd(["lsof", "-nwP", `-iTCP:${port}`]);
-    // const outString = await runCmd(["lsof", "-ntP", `-iTCP:${port}`]);
-    // console.log("4##############");
-    console.log(outString);
-    // // throw Error('tets')
-    // deno      1407 runner   13u  IPv4 0x85fdd397dc6713cf      0t0  TCP *:8081 (LISTEN)
-    const parsedLines = outString.split("\n")
-    .map((line) => line.match(/\S+/g) || []);
 
-    const pidColumnsIndex = 4;
+    // COMMAND  PID   USER     FD   TYPE                         DEVICE SIZE/OFF NODE NAME
+    // deno     1407  runner   13u  IPv4 0x85fdd397dc6713cf      0t0  TCP *:8081 (LISTEN)
+    const parsedLines = outString.split("\n")
+      .map((line) => line.match(/\S+/g) || []);
+
+    const pidColumnsIndex = 2;
+
+    // remove the headers
+    parsedLines.shift();
 
     const pids = parsedLines
       .filter((arr) => arr.length !== 0) // filter invalid arrays
       .map((arr) => +arr[pidColumnsIndex]) // extract pids based on columns
       .filter((pid) => Number.isInteger(pid) && pid !== 0); // ensure they are numbers. pid 0 can be ignored
-    console.log('res', pids)
-    return pids
+
+    console.log("res", pids);
+    return pids;
   } else {
     console.log("Platform not supported yet");
     throw Error("Platform not supported yet");
