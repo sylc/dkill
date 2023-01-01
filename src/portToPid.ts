@@ -60,14 +60,13 @@ export async function portToPid(port: number): Promise<number[]> {
 
     return [...new Set(pids)]; // remove duplicates;
   } else if (os === "darwin") {
-    console.log(await runCmd(["lsof", "-nwP", `-iTCP:${port}`]));
     const outString = await runCmd(["lsof", "-nwP", `-iTCP:${port}`]);
 
     // COMMAND  PID   USER     FD   TYPE                         DEVICE SIZE/OFF NODE NAME
     // deno     1407  runner   13u  IPv4 0x85fdd397dc6713cf      0t0  TCP *:8081 (LISTEN)
     const pids = grepPortMacOS(outString);
-    console.log("res", pids);
-    return pids;
+
+    return [...new Set(pids)]; // remove duplicates;
   } else {
     console.log("Platform not supported yet");
     throw Error("Platform not supported yet");

@@ -3,7 +3,7 @@ export async function runCmd(cmd: string[], verbose?: boolean) {
   const exec = Deno.run({
     cmd,
     stdout: "piped",
-    // stderr: "piped",
+    stderr: "piped",
   });
 
   const out = await exec.output();
