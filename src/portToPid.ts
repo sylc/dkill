@@ -74,9 +74,9 @@ export async function portToPid(port: number): Promise<number[]> {
     return [...new Set(pids)]; // remove duplicates;
   } else if (os === "darwin") {
     console.log("1##############")
-    console.log(await runCmd(["lsof"]))
+    // console.log(await runCmd(["lsof"]))
     // console.log("2##############")
-    // console.log(await runCmd(["lsof", "-i", "-P"]))
+    console.log(await runCmd(["lsof", "-nP", "-iTCP"]))
     // console.log("3##############")
     // const outString = await runCmd(["lsof", "-ntP", `-iTCP:${port}`]);
     // const outString = await runCmd(["lsof", "-ntP", `-iTCP:${port}`]);
