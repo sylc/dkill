@@ -25,7 +25,7 @@ jobs:
         run: deno lint
 
       - name: fmt
-        run: deno fmt
+        run: deno fmt --check
       
       - name: Run Test files in the repository
         run: |
