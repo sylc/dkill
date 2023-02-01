@@ -8,10 +8,10 @@ import vJson from "./version.json" assert { type: "json" };
 
 // check minimum version of deno
 const minVRequired = "1.29.1";
-// if (!assertMinVersion(Deno.version.deno, minVRequired)) {
-//   console.error(`Please upgrade deno. min version required: ${minVRequired}`);
-//   Deno.exit(1);
-// }
+if (!assertMinVersion(Deno.version.deno, minVRequired)) {
+  console.error(`Please upgrade deno. min version required: ${minVRequired}`);
+  Deno.exit(1);
+}
 
 await new Command()
   .name("dkill")
