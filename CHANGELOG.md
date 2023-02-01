@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.9.1] - 2023-02-01
+
+### Bug Fixes
+
+- fix: Correct minVersion required (#15) ([720fd2c])
+
 ## [0.9.0] - 2023-01-01
 
 ### Features
@@ -26,6 +32,8 @@ All notable changes to this project will be documented in this file.
 
 - feat: add min version and improve release process ([5430356])
 
+[0.9.1]: https://github.com/sylc/dkill/compare/0.9.1
+[720fd2c]: https://github.com/sylc/dkill/commit/720fd2cbeb82afc3fdbef313f8e1675276578e1b
 [0.9.0]: https://github.com/sylc/dkill/compare/0.9.0
 [d3e2290]: https://github.com/sylc/dkill/commit/d3e22903c5d3d02058e79328ff1648801c4265ed
 [0.8.0]: https://github.com/sylc/dkill/compare/0.8.0
