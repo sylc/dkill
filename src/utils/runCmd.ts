@@ -1,3 +1,7 @@
+/**
+ * Return the stdout of the command.
+ * This does not throw if the code return is non zero.
+ */
 export async function runCmd(cmd: string[], verbose?: boolean) {
   verbose && console.log(cmd.join(" "));
   const [cmd1, ...cmd2] = cmd;
