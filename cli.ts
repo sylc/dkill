@@ -7,9 +7,11 @@ import { assertMinVersion } from "./src/utils/versions.ts";
 import vJson from "./version.json" assert { type: "json" };
 
 // check minimum version of deno
-const minVRequired = "1.29.1";
+const minVRequired = "1.31.1"; // uses deno.Command
 if (!assertMinVersion(Deno.version.deno, minVRequired)) {
-  console.error(`Please upgrade deno. min version required: ${minVRequired}`);
+  console.error(
+    `Please upgrade deno. Minimum version required is: ${minVRequired}`,
+  );
   Deno.exit(1);
 }
 

@@ -1,5 +1,5 @@
 [![deno module](https://shield.deno.dev/x/dkill)](https://deno.land/x/dkill)
-![deno compatibility](https://shield.deno.dev/deno/^1.29.1)
+![deno compatibility](https://shield.deno.dev/deno/^1.31.1)
 
 <h1 align="center">
   🎯 dkill
