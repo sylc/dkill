@@ -7,7 +7,6 @@ export async function runCmd(cmd: string[], verbose?: boolean) {
     stderr: "inherit",
   });
 
-  const { code, stdout } = await exec.output();
-  if (code !== 0) throw Error(`fail executing ${cmd.join(" ")}`);
+  const { stdout } = await exec.output();
   return new TextDecoder().decode(stdout);
 }
