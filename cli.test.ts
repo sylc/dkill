@@ -1,4 +1,9 @@
-import { assertEquals, assertNotEquals, delay } from "./deps_test.ts";
+import {
+  assertEquals,
+  assertNotEquals,
+  assertStringIncludes,
+  delay,
+} from "./deps_test.ts";
 
 Deno.test("killing by pid", async () => {
   // create test process
@@ -59,7 +64,6 @@ Deno.test({
       args: [
         "run",
         "-A",
-        "--unstable",
         "./cli.ts",
         "--verbose",
         ":8080",
@@ -81,4 +85,22 @@ Deno.test({
     assertNotEquals(status2.code, 0);
     assertNotEquals(status2.code, 5);
   },
+});
+
+Deno.test("Invalid ports", async () => {
+  // call dkill
+  const pDkillCmd = new Deno.Command(Deno.execPath(), {
+    args: [
+      "run",
+      "-A",
+      "./cli.ts",
+      ":8080",
+    ],
+  });
+
+  // wait dkill finishes
+  const { code, stdout } = await pDkillCmd.output();
+  // ensure dkill exited cleanly
+  assertEquals(code, 0);
+  assertStringIncludes(new TextDecoder().decode(stdout), "No process found");
 });
