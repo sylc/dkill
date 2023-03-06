@@ -3,7 +3,7 @@
     "test": "deno test --allow-run --allow-net --allow-read",
     "testm": "deno run --allow-run --allow-net ./src/tests/utils.ts",
     "dev": "deno run --allow-run --allow-net ./cli.ts",
-    "release": "deno run -A https://deno.land/x/release_up@0.6.0/cli.ts --regex \"(?<=@)(.*)(?=\/cli)\" --github --versionFile --changelog"
+    "release": "deno run -A https://deno.land/x/release_up@0.7.0/cli.ts --regex \"(?<=@)(.*)(?=\/cli)\" --github --versionFile --changelog"
   },
   "fmt": {
     "files": {
