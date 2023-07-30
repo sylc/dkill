@@ -49,7 +49,6 @@ await new Command()
         await upgrader({
           packageName: "dkill",
           currentVersion: vJson.version,
-          denoLand: true,
         });
         return;
       }

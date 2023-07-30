@@ -13,27 +13,34 @@ async function fetchNewFlags(url: string) {
 export async function upgrader(config: {
   packageName: string;
   currentVersion: string;
-  denoLand?: boolean;
 }) {
-  // try to find the install script
-  console.log("Run ONE of the below commands");
-  if (config.denoLand) {
-    const versions = await (
-      await fetch(
-        `https://cdn.deno.land/${config.packageName}/meta/versions.json`,
-      )
-    ).json();
-    if (config.currentVersion !== versions.latest) {
-      const newFlags = await fetchNewFlags(
-        `https://deno.land/x/${config.packageName}@${versions.latest}/version.ts`,
-      );
-      console.log(
-        `deno.land: deno install -f ${
-          newFlags.join(" ")
-        } https://deno.land/x/${config.packageName}@${versions.latest}/cli.ts`,
-      );
-    } else {
-      console.log("Already up to date from deno.land");
-    }
+  // try to find the latest version
+  console.log("Looking up latest version");
+  const versions = await (
+    await fetch(
+      `https://cdn.deno.land/${config.packageName}/meta/versions.json`,
+    )
+  ).json();
+  // We do not consider the < comparison because
+  // it is unlikely to eb  > (not doing canary release)
+  // so if not equal, it must be lower version
+  if (config.currentVersion !== versions.latest) {
+    const newFlags = await fetchNewFlags(
+      `https://deno.land/x/${config.packageName}@${versions.latest}/version.ts`,
+    );
+
+    console.log(
+      `Current version: ${config.currentVersion}; latest Version: ${versions.latest}`,
+    );
+    console.log("Run the below command to update:");
+    console.log(
+      `deno install -f ${
+        newFlags.join(" ")
+      } https://deno.land/x/${config.packageName}@${versions.latest}/cli.ts`,
+    );
+  } else {
+    console.log(
+      `Local version ${config.currentVersion} is the most recent release`,
+    );
   }
 }
