@@ -5,7 +5,10 @@
  * @param {boolean} [opts.verbose]
  * @returns
  */
-export function KillPids(pids: number[], opts?: { verbose?: boolean }) {
+export function KillPids(
+  pids: number[],
+  opts?: { verbose?: boolean },
+): number[] {
   const pidKilled: number[] = [];
 
   // Ensure no duplicates.

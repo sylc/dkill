@@ -28,7 +28,7 @@ export async function dkill(
     procs?: string[];
   },
   opts?: { verbose?: boolean; dryrun?: boolean; includeCmds?: boolean },
-) {
+): Promise<PidToKill[]> {
   setVerbose(opts?.verbose);
 
   const { pids, ports, procs } = targets;
