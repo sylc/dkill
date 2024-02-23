@@ -1,13 +1,12 @@
-async function fetchNewFlags(url: string) {
-  const versionRes = await fetch(url);
-  const versionText = await versionRes.text();
-
-  const parsed = versionText.match(/denoFlags =[\s\S]*];/);
-  if (!parsed) throw Error("Cannot parse flags");
-  const flags = JSON.parse(
-    parsed[0].slice("denoFlags =".length, parsed[0].length - 1),
+async function fetchNewCommand(version: string) {
+  const readMeRes = await fetch(
+    `https://jsr.io/@sylc/dkill/${version}/README.md`,
   );
-  return flags;
+  const readmeText = await readMeRes.text();
+
+  const parsed = readmeText.match(/deno install .*/);
+  if (!parsed || parsed.length === 0) throw Error("Cannot parse new command");
+  return parsed[0];
 }
 
 export async function upgrader(config: {
@@ -22,22 +21,15 @@ export async function upgrader(config: {
     )
   ).json();
   // We do not consider the < comparison because
-  // it is unlikely to eb  > (not doing canary release)
+  // it is unlikely to be > (not doing canary release)
   // so if not equal, it must be lower version
+  // TODO: use @std/semver
   if (config.currentVersion !== versions.latest) {
-    const newFlags = await fetchNewFlags(
-      `https://deno.land/x/${config.packageName}@${versions.latest}/version.ts`,
-    );
-
-    console.log(
-      `Current version: ${config.currentVersion}; latest Version: ${versions.latest}`,
-    );
-    console.log("Run the below command to update:");
-    console.log(
-      `deno install -f ${
-        newFlags.join(" ")
-      } https://deno.land/x/${config.packageName}@${versions.latest}/cli.ts`,
-    );
+    // retrieve command from new version
+    // const command = await fetchNewCommand(versions.latest);
+    const command = await fetchNewCommand("0.10.1");
+    console.log("A new version is available. Run the below command to update:");
+    console.log(command);
   } else {
     console.log(
       `Local version ${config.currentVersion} is the most recent release`,
