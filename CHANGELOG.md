@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.11.1] - 2024-02-23
+
+### Bug Fixes
+
+- fix: revert using jsr for now. ([c8256c5])
+
+Full Changelog: [0.11.0...0.11.1]
+
 ## [0.11.0] - 2024-02-23
 
 ### Bug Fixes
@@ -11,6 +19,7 @@ All notable changes to this project will be documented in this file.
 
 ### Others
 
+- chore: release 0.11.0 ([2ac5e5c])
 - BREAKING(upgrader): remove version file and use deno.json instead.  (#19) ([e15ec57])
 - chore: Add types and bump version ([5ff3cb3])
 - chore: add package name ([a15d995])
@@ -243,9 +252,13 @@ Full Changelog: [0.2.2...0.2.3]
 - readme ([c259a78])
 - init ([a467991])
 
+[0.11.1]: https://github.com/sylc/dkill/compare/0.11.0...0.11.1
+[c8256c5]: https://github.com/sylc/dkill/commit/c8256c52e2a37c2a101613420b8829f44fb3504d
+[0.11.0...0.11.1]: https://github.com/sylc/dkill/compare/0.11.0...0.11.1
 [0.11.0]: https://github.com/sylc/dkill/compare/0.10.0...0.11.0
 [bf82a34]: https://github.com/sylc/dkill/commit/bf82a34dca5367303d4574ece47bb389e6fe2bb6
 [9e045fd]: https://github.com/sylc/dkill/commit/9e045fdf631976d4fcbd7ac7e3cd1534eb574231
+[2ac5e5c]: https://github.com/sylc/dkill/commit/2ac5e5ccc8b74e6c7a595793a1aac00569e30fff
 [e15ec57]: https://github.com/sylc/dkill/commit/e15ec5753e7b98e616bdc22697fb0d6e456e13b1
 [5ff3cb3]: https://github.com/sylc/dkill/commit/5ff3cb3d29476e473f28644ba9039c01c4f9043b
 [a15d995]: https://github.com/sylc/dkill/commit/a15d995d80ca1335c344f584d68b56d5327a7fb5
