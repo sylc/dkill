@@ -1,7 +1,5 @@
-async function fetchNewCommand(version: string) {
-  const readMeRes = await fetch(
-    `https://jsr.io/@sylc/dkill/${version}/README.md`,
-  );
+async function fetchNewCommand(url: string) {
+  const readMeRes = await fetch(url);
   const readmeText = await readMeRes.text();
 
   const parsed = readmeText.match(/deno install .*/);
@@ -27,7 +25,9 @@ export async function upgrader(config: {
   if (config.currentVersion !== versions.latest) {
     // retrieve command from new version
     // const command = await fetchNewCommand(versions.latest);
-    const command = await fetchNewCommand("0.10.1");
+    const command = await fetchNewCommand(
+      `https://deno.land/x/${config.packageName}@${versions.latest}/README.md`,
+    );
     console.log("A new version is available. Run the below command to update:");
     console.log(command);
   } else {
