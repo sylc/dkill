@@ -14,7 +14,7 @@
 ### Install
 
 ```
-deno install -f --allow-run --allow-net https://deno.land/x/dkill@0.10.0/cli.ts
+deno install -f jsr:@sylc/dkill
 ```
 
 You can then use it using command `dkill`

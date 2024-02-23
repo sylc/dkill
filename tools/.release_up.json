@@ -1,0 +1,14 @@
+{
+  "changelog": {},
+  "github": {
+    "release": true
+  },
+  "regex": [
+    {
+      "file": "deno.json",
+      "patterns": [
+        "(?<=\"version\": \")(.*)(?=\",)"
+      ]
+    }
+  ]
+}
