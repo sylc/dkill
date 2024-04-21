@@ -3,6 +3,5 @@ export {
   assertEquals,
   assertNotEquals,
   assertStringIncludes,
-} from "https://deno.land/std@0.170.0/testing/asserts.ts";
-export { delay } from "https://deno.land/std@0.170.0/async/mod.ts";
-export { serve } from "https://deno.land/std@0.170.0/http/server.ts";
+} from "jsr:@std/assert@0.223.0";
+export { delay } from "jsr:@std/async@0.223.0/delay";

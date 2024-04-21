@@ -65,7 +65,7 @@ export const run = async () => {
           }
           // list processes
           const pList = await procList();
-          const pickedProcesses: string[] = await Checkbox.prompt({
+          const pickedProcesses: string[] = await Checkbox.prompt<string>({
             message: "Pick processes to kill",
             options: pList.map((item) => ({
               name: `${item.pid} | ${item.proc} | ${item.cmd}`,
