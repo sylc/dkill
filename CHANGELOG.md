@@ -2,11 +2,31 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.12.0] - 2024-04-21
+
+### Bug Fixes
+
+- fix: upgrader uses jsr and readme (#22) ([ac8d2fd])
+- fix: revert using jsr for now. (#20) ([f23d58e])
+
+### Others
+
+- chore: fix readme ([4732c6e])
+- refactor: use jsr for test ([85621f0])
+- refactor: use jsr deps ([768b6ac])
+- chore: release 0.11.1 (#21) ([f8fe238])
+
+Full Changelog: [0.11.1...0.12.0]
+
 ## [0.11.1] - 2024-02-23
 
 ### Bug Fixes
 
 - fix: revert using jsr for now. ([c8256c5])
+
+### Others
+
+- chore: release 0.11.1 ([50604d2])
 
 Full Changelog: [0.11.0...0.11.1]
 
@@ -252,8 +272,17 @@ Full Changelog: [0.2.2...0.2.3]
 - readme ([c259a78])
 - init ([a467991])
 
+[0.12.0]: https://github.com/sylc/dkill/compare/0.11.1...0.12.0
+[ac8d2fd]: https://github.com/sylc/dkill/commit/ac8d2fd5253e32db5a7cb29ad1553764fcf0bab7
+[f23d58e]: https://github.com/sylc/dkill/commit/f23d58ec6029781c4914e47f42c8844398001b19
+[4732c6e]: https://github.com/sylc/dkill/commit/4732c6e99a460136815da1b46c738e6015903989
+[85621f0]: https://github.com/sylc/dkill/commit/85621f04113d4b73441fd2c24ed6052f0d77be56
+[768b6ac]: https://github.com/sylc/dkill/commit/768b6acf73a6614fa10acea5622562725a21a802
+[f8fe238]: https://github.com/sylc/dkill/commit/f8fe238a9a2e6e8f9572e4a837c6bd845dd2ace5
+[0.11.1...0.12.0]: https://github.com/sylc/dkill/compare/0.11.1...0.12.0
 [0.11.1]: https://github.com/sylc/dkill/compare/0.11.0...0.11.1
 [c8256c5]: https://github.com/sylc/dkill/commit/c8256c52e2a37c2a101613420b8829f44fb3504d
+[50604d2]: https://github.com/sylc/dkill/commit/50604d20b7c86396a5cc850fb384c14bf843d40d
 [0.11.0...0.11.1]: https://github.com/sylc/dkill/compare/0.11.0...0.11.1
 [0.11.0]: https://github.com/sylc/dkill/compare/0.10.0...0.11.0
 [bf82a34]: https://github.com/sylc/dkill/commit/bf82a34dca5367303d4574ece47bb389e6fe2bb6
