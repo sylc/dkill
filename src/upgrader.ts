@@ -13,9 +13,10 @@ export async function upgrader(config: {
 }) {
   // try to find the latest version
   console.log("Looking up latest version");
+  let command = "";
   const versions = await (
     await fetch(
-      `https://cdn.deno.land/${config.packageName}/meta/versions.json`,
+      `https://jsr.io/@sylc/${config.packageName}/meta.json`,
     )
   ).json();
   // We do not consider the < comparison because
@@ -25,8 +26,8 @@ export async function upgrader(config: {
   if (config.currentVersion !== versions.latest) {
     // retrieve command from new version
     // const command = await fetchNewCommand(versions.latest);
-    const command = await fetchNewCommand(
-      `https://deno.land/x/${config.packageName}@${versions.latest}/README.md`,
+    command = await fetchNewCommand(
+      `https://jsr.io/@sylc/${config.packageName}/${versions.latest}/README.md`,
     );
     console.log("A new version is available. Run the below command to update:");
     console.log(command);
@@ -35,4 +36,5 @@ export async function upgrader(config: {
       `Local version ${config.currentVersion} is the most recent release`,
     );
   }
+  return command;
 }
