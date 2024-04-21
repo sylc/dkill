@@ -1,5 +1,4 @@
 [![JSR](https://jsr.io/badges/@sylc/dkill)](https://jsr.io/@sylc/dkill)
-
 ![deno compatibility](https://shield.deno.dev/deno/^1.42.4)
 
 <h1 align="center">
