@@ -27,8 +27,10 @@ jobs:
       - name: fmt
         run: deno fmt --check
       
+      - name: Check
+        run: deno check ./mod.ts
+      
       - name: Run Test files in the repository
-        run: |
-          deno test -A 
+        run: deno test -A 
       
       - run: echo "🍏 This job's status is ${{ job.status }}."
