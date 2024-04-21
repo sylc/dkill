@@ -1,5 +1,5 @@
 [![deno module](https://shield.deno.dev/x/dkill)](https://deno.land/x/dkill)
-![deno compatibility](https://shield.deno.dev/deno/^1.31.1)
+![deno compatibility](https://shield.deno.dev/deno/^1.42.4)
 
 <h1 align="center">
   🎯 dkill
@@ -14,7 +14,7 @@
 ### Install
 
 ```
-deno install -f --allow-run --allow-net https://deno.land/x/dkill@0.11.1/cli.ts
+deno install -f --allow-run --allow-net jsr:@sylc/dkill@0.11.2
 ```
 
 You can then use it using command `dkill`
