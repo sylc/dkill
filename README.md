@@ -15,7 +15,7 @@
 ### Install
 
 ```
-deno install --global --force --allow-run --allow-net jsr:@sylc/dkill@0.11.2
+deno install --global --force --allow-run --allow-net jsr:@sylc/dkill
 ```
 
 You can then use it using command `dkill`
