@@ -1,4 +1,5 @@
-[![deno module](https://shield.deno.dev/x/dkill)](https://deno.land/x/dkill)
+[![JSR](https://jsr.io/badges/@sylc/dkill)](https://jsr.io/@sylc/dkill)
+
 ![deno compatibility](https://shield.deno.dev/deno/^1.42.4)
 
 <h1 align="center">
@@ -14,7 +15,7 @@
 ### Install
 
 ```
-deno install -f --allow-run --allow-net jsr:@sylc/dkill@0.11.2
+deno install --global --force --allow-run --allow-net jsr:@sylc/dkill
 ```
 
 You can then use it using command `dkill`
@@ -42,12 +43,12 @@ Usage:   dkill <targets...>
     -d, --dryrun   - Dry run, List the pids that would have been killed. Does not kill anything
 ```
 
-## Programatic Usage
+## Programmatic Usage
 
 mod.ts exports multiple functions that can be used programmatically. Check
 source code for more info
 
-See [docs](https://doc.deno.land/https://deno.land/x/dkill/mod.ts)
+See [docs](https://jsr.io/@sylc/dkill/doc)
 
 ## OS Support
 
