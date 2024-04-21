@@ -1,5 +1,5 @@
 import { procList } from "../mod.ts";
-import { PidItem } from "./utils/types.ts";
+import type { PidItem } from "./utils/types.ts";
 
 /**
  * Get the command that started a pid

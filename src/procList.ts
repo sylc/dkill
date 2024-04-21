@@ -1,5 +1,5 @@
 import { runCmd } from "./utils/runCmd.ts";
-import { PidItem } from "./utils/types.ts";
+import type { PidItem } from "./utils/types.ts";
 
 /**
  * list all process running.
