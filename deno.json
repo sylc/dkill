@@ -1,6 +1,6 @@
 {
   "name": "@sylc/dkill",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "exports": "./mod.ts",
   "tasks": {
     "test": "deno test --allow-run --allow-net --allow-read",

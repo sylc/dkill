@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.12.1] - 2024-10-11
+
+- chore: update deps and ci to deno2. (#23) ([e4550ad])
+
+Full Changelog: [0.12.0...0.12.1]
+
 ## [0.12.0] - 2024-04-21
 
 ### Bug Fixes
@@ -11,6 +17,7 @@ All notable changes to this project will be documented in this file.
 
 ### Others
 
+- chore: release 0.12.0 ([181ac51])
 - chore: fix readme ([4732c6e])
 - refactor: use jsr for test ([85621f0])
 - refactor: use jsr deps ([768b6ac])
@@ -272,9 +279,13 @@ Full Changelog: [0.2.2...0.2.3]
 - readme ([c259a78])
 - init ([a467991])
 
+[0.12.1]: https://github.com/sylc/dkill/compare/0.12.0...0.12.1
+[e4550ad]: https://github.com/sylc/dkill/commit/e4550ada8b14d22359f83abb935aca4e0d001b36
+[0.12.0...0.12.1]: https://github.com/sylc/dkill/compare/0.12.0...0.12.1
 [0.12.0]: https://github.com/sylc/dkill/compare/0.11.1...0.12.0
 [ac8d2fd]: https://github.com/sylc/dkill/commit/ac8d2fd5253e32db5a7cb29ad1553764fcf0bab7
 [f23d58e]: https://github.com/sylc/dkill/commit/f23d58ec6029781c4914e47f42c8844398001b19
+[181ac51]: https://github.com/sylc/dkill/commit/181ac51662528e445e13ce9e1bd149e59b2b3633
 [4732c6e]: https://github.com/sylc/dkill/commit/4732c6e99a460136815da1b46c738e6015903989
 [85621f0]: https://github.com/sylc/dkill/commit/85621f04113d4b73441fd2c24ed6052f0d77be56
 [768b6ac]: https://github.com/sylc/dkill/commit/768b6acf73a6614fa10acea5622562725a21a802
