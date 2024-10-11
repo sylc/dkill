@@ -2,8 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.12.3] - 2024-10-11
+
+- chore: fix fmt ([861d927])
+- chore: fix ci tag regex ([8e56e7d])
+
+Full Changelog: [0.12.2...0.12.3]
+
 ## [0.12.2] - 2024-10-11
 
+- chore: release 0.12.2 ([1613151])
 - automatically release to jsr on tag ([5f5f511])
 
 Full Changelog: [0.12.1...0.12.2]
@@ -286,7 +294,12 @@ Full Changelog: [0.2.2...0.2.3]
 - readme ([c259a78])
 - init ([a467991])
 
+[0.12.3]: https://github.com/sylc/dkill/compare/0.12.2...0.12.3
+[861d927]: https://github.com/sylc/dkill/commit/861d927a7f3e3a6f1a54c998648bc4038f73cd23
+[8e56e7d]: https://github.com/sylc/dkill/commit/8e56e7ddf4cf2e2521427e50d23ffbc460a15fd7
+[0.12.2...0.12.3]: https://github.com/sylc/dkill/compare/0.12.2...0.12.3
 [0.12.2]: https://github.com/sylc/dkill/compare/0.12.1...0.12.2
+[1613151]: https://github.com/sylc/dkill/commit/16131516d153d1107b818c5acd4134e4e3a2caa3
 [5f5f511]: https://github.com/sylc/dkill/commit/5f5f511c8bea491135345a88d3f3ac45a7545300
 [0.12.1...0.12.2]: https://github.com/sylc/dkill/compare/0.12.1...0.12.2
 [0.12.1]: https://github.com/sylc/dkill/compare/0.12.0...0.12.1
