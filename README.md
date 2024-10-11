@@ -13,7 +13,7 @@
 
 ### Install
 
-```
+```sh
 deno install --global --force --allow-run --allow-net jsr:@sylc/dkill
 ```
 
