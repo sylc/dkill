@@ -3,5 +3,5 @@ export {
   assertEquals,
   assertNotEquals,
   assertStringIncludes,
-} from "jsr:@std/assert@0.223.0";
-export { delay } from "jsr:@std/async@0.223.0/delay";
+} from "jsr:@std/assert@1.0.6";
+export { delay } from "jsr:@std/async@1.0.6/delay";
