@@ -2,8 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.12.2] - 2024-10-11
+
+- automatically release to jsr on tag ([5f5f511])
+
+Full Changelog: [0.12.1...0.12.2]
+
 ## [0.12.1] - 2024-10-11
 
+- chore: release 0.12.1 ([4a0f4a2])
 - chore: update deps and ci to deno2. (#23) ([e4550ad])
 
 Full Changelog: [0.12.0...0.12.1]
@@ -279,7 +286,11 @@ Full Changelog: [0.2.2...0.2.3]
 - readme ([c259a78])
 - init ([a467991])
 
+[0.12.2]: https://github.com/sylc/dkill/compare/0.12.1...0.12.2
+[5f5f511]: https://github.com/sylc/dkill/commit/5f5f511c8bea491135345a88d3f3ac45a7545300
+[0.12.1...0.12.2]: https://github.com/sylc/dkill/compare/0.12.1...0.12.2
 [0.12.1]: https://github.com/sylc/dkill/compare/0.12.0...0.12.1
+[4a0f4a2]: https://github.com/sylc/dkill/commit/4a0f4a2e76ac32a902b60a81ee40f312a5888bd0
 [e4550ad]: https://github.com/sylc/dkill/commit/e4550ada8b14d22359f83abb935aca4e0d001b36
 [0.12.0...0.12.1]: https://github.com/sylc/dkill/compare/0.12.0...0.12.1
 [0.12.0]: https://github.com/sylc/dkill/compare/0.11.1...0.12.0
