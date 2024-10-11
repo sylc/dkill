@@ -16,6 +16,8 @@ Commits type must be one of the following:
 
 ## Release
 
-To release a new version run the below:
+To release a new version run the below on `main`:
 
-`deno task release`
+- `deno task release`
+
+This will tag the release which then trigger a new CI to publish to JSR.
